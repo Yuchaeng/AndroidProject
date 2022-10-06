@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_home"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="홈" />
+    <item
+        android:id="@+id/tab_friend"
+        android:enabled="true"
+        android:icon="@drawable/friend"
+        android:title="친구추가"/>
+    <item
+        android:id="@+id/tab_chat"
+        android:icon="@drawable/chat"
+        android:title="채팅"/>
+    <item
+        android:id="@+id/tab_mpage"
+        android:enabled="true"
+        android:icon="@drawable/my"
+        android:title="마이페이지"/>
+</menu>
