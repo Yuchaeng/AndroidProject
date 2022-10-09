@@ -25,19 +25,19 @@
             android:layout_gravity="center"
             android:layout_marginEnd="156dp"
             android:layout_marginRight="160dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:text="프레즐"
             android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/bell"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginStart="93dp"
             android:layout_marginLeft="93dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/bell" />
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="게시판"
         android:textSize="25dp" />
 
@@ -71,21 +71,30 @@
             android:layout_weight="1"
             android:background="@drawable/btn_shape"
             android:paddingTop="15dp"
+            android:drawableTop="@drawable/boong_draw"
             android:text="붕짜"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <Button
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape" />
+            android:background="@drawable/btn_shape"
+            android:drawableTop="@drawable/rice_draw"
+            android:paddingTop="15dp"
+            android:text="학식(밥)"
+            android:textSize="18sp"/>
 
         <Button
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape" />
+            android:background="@drawable/btn_shape"
+            android:drawableTop="@drawable/exercise_draw"
+            android:text="운동"
+            android:textSize="18sp"
+            android:paddingTop="15dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,22 +103,31 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
         <Button
-            android:layout_width="125dp"
+            android:layout_width="110dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/btn_shape"/>
+            android:background="@drawable/btn_shape"
+            android:drawableTop="@drawable/study_draw"
+            android:text="스터디"
+            android:textSize="18sp"
+            android:paddingTop="15dp"/>
+
         <Button
-            android:layout_width="125dp"
+            android:layout_width="110dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape"/>
+            android:background="@drawable/btn_shape"
+            android:drawableTop="@drawable/free_draw"
+            android:paddingTop="8dp"
+            android:text="자유"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ImageView
-        android:layout_width="390dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:src="@drawable/meeting" />
 
