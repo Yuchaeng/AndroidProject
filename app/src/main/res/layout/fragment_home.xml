@@ -8,40 +8,31 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/homeBar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="#ffffff"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginEnd="156dp"
-            android:layout_marginRight="160dp"
-            android:layout_marginBottom="20dp"
             android:text="프레즐"
+            android:layout_marginLeft="130dp"
             android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/bell"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="93dp"
-            android:layout_marginLeft="93dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
             android:background="@drawable/bell" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -94,7 +85,7 @@
             android:drawableTop="@drawable/exercise_draw"
             android:text="운동"
             android:textSize="18sp"
-            android:paddingTop="15dp"/>
+            android:paddingTop="20dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
