@@ -1,14 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MypageFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".MypageFragment"
+    android:orientation="vertical">
+    
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="마이페이지" />
+        android:orientation="vertical">
 
-</FrameLayout>
+
+
+<!--헤더-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 프로필"
+            android:textSize="30sp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <!--        프사, 프로필편집 표시-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+<!--        프사, 닉네임 레이아웃-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:paddingLeft="-35dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/cat_temp"
+                app:civ_border_width="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+<!--        프로필 편집 버튼-->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:text="프로필 편집"
+            android:textSize="18sp"
+            android:background="@drawable/profile_draw"/>
+    </LinearLayout>
+
+<!--    공강, 관심사, 한줄소개 보여주기-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+<!--공강시간 레이아웃-->
+        <LinearLayout
+            android:id="@+id/time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/emptyTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:drawableTop="@drawable/time"
+                android:text="공강시간"
+                android:textColor="#bb97f0"
+                android:textSize="15sp" />
+
+<!--아래 텍스트뷰는 화면 보여주는용,
+프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월 13시~15시"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+<!--        관심사 레이아웃 -->
+        <LinearLayout
+            android:id="@+id/interest_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time_layout"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/myInterest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="관심사/특징"
+                android:textSize="15sp"
+                android:textColor="#bb97f0"
+                android:drawableTop="@drawable/interest" />
+            <!--아래 텍스트뷰는 화면 보여주는용,
+프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="entp"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+<!--        한줄소개 레이아웃 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/interest_layout"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myInterest"
+                android:text="한줄소개"
+                android:textSize="15sp"
+                android:textColor="#bb97f0"
+                android:drawableTop="@drawable/introduce"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                />
+            <!--아래 텍스트뷰는 화면 보여주는용,
+프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="잘 부탁해용~~~"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+<!--    구분선, 내가 작성한 글 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="#b4aeae"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="내가 작성한 글"
+       android:textSize="20sp"
+       android:layout_margin="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:nestedScrollingEnabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
