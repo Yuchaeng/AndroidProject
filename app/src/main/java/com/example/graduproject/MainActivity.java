@@ -3,6 +3,8 @@ package com.example.graduproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ChatFragment chatFragment;
     MypageFragment mypageFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         chatFragment = new ChatFragment();
         mypageFragment = new MypageFragment();
         home_cs = findViewById(R.id.home_cs);
+
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, homeFragment).commit();
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
@@ -52,5 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 }

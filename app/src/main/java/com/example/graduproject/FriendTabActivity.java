@@ -1,51 +1,3 @@
-/*
-package com.example.graduproject;
-
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
-
-public class FriendFragment extends Fragment {
-
-
-    private TabLayout tabLayout;
-    private ViewPager2 viewPager2;
-    private FragmentStateAdapter adapter;
-    private int num_page = 2;
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        tabLayout = getView().findViewById(R.id.tabs_friend);
-        viewPager2 = getView().findViewById(R.id.view_pager2);
-        adapter = new VPAdapter(this, num_page);
-
-        viewPager2.setAdapter(adapter);
-        viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
-        viewPager2.setCurrentItem(1000);
-        viewPager2.setOffscreenPageLimit(3);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend, container, false);
-    }
-}*/
-
 package com.example.graduproject;
 
 import androidx.fragment.app.Fragment;
@@ -55,7 +7,7 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class FriendFragment extends Fragment {
+public class FriendTabActivity extends FragmentActivity {
 
     TabLayout tabs;
 
@@ -103,5 +55,4 @@ public class FriendFragment extends Fragment {
         });
     }
 }
-
 
