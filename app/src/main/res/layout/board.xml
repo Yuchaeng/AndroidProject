@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/ingBtn"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="모집중"
+        android:layout_marginLeft="15dp"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/boardContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingBtn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:text="필수기입항목"/>
+
+    <TextView
+        android:id="@+id/boardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boardContent"
+        android:text="제목"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/boardTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시간"
+        android:layout_below="@+id/ingBtn"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_marginRight="20dp"/>
+
+
+    <TextView
+        android:id="@+id/boardName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="닉네임"
+        android:textSize="15sp"
+        android:layout_below="@+id/boardTitle"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/commentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boardTitle"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/boardName"
+        android:drawableLeft="@drawable/comment"
+        android:text=" 1"
+        android:textSize="15dp" />
+
+
+</RelativeLayout>
