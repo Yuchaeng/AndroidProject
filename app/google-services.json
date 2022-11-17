@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050888421741",
+    "project_id": "android-pretzel",
+    "storage_bucket": "android-pretzel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050888421741:android:a66a7407c4595008edda64",
+        "android_client_info": {
+          "package_name": "com.example.graduproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050888421741-c70m7g8lq2farbr5ij4dk3i5ldoplsfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIOZBFSHRne-CcgqfQ0NYUuf_UaLxcUGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050888421741-c70m7g8lq2farbr5ij4dk3i5ldoplsfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
