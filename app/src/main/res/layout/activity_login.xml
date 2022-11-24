@@ -27,6 +27,7 @@
         android:layout_marginTop="30dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textEmailAddress"
             android:id="@+id/mailEdit"
             android:layout_width="280dp"
             android:layout_height="wrap_content" />
@@ -37,6 +38,7 @@
         android:id="@+id/userPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
         android:hint="비밀번호"
         android:layout_gravity="center"
         android:layout_marginTop="10dp">
@@ -44,6 +46,7 @@
             android:id="@+id/pwEdit"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             />
     </com.google.android.material.textfield.TextInputLayout>
     

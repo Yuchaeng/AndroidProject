@@ -24,6 +24,7 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/signText">
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textEmailAddress"
             android:id="@+id/idEdittext"
             android:layout_width="280dp"
             android:layout_height="50dp" />

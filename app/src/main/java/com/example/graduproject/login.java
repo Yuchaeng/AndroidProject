@@ -40,6 +40,7 @@ public class login extends AppCompatActivity {
     private TextInputLayout userMail;
     private TextInputLayout userPw;
     private TextInputEditText mailEdit;
+    private TextInputEditText passEdit;
     private FirebaseAuth mAuth;
 
 
@@ -51,8 +52,8 @@ public class login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         userMail = findViewById(R.id.userMail);
         userPw = findViewById(R.id.userPw);
-
         mailEdit = findViewById(R.id.mailEdit);
+        passEdit = findViewById(R.id.pwEdit);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -90,8 +91,8 @@ public class login extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userEmail = userMail.getEditText().toString();
-                String userPassword = userPw.getEditText().toString();
+                String userEmail = mailEdit.getText().toString();
+                String userPassword = passEdit.getText().toString();
 
                 if(!userEmail.isEmpty() && !userPassword.isEmpty()) {
                     userLogin(userEmail,userPassword);
