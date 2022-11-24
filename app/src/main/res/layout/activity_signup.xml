@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup" >
+
+    <TextView
+        android:id="@+id/signText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/idInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="학교 웹메일"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/signText">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idEdittext"
+            android:layout_width="280dp"
+            android:layout_height="50dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pwInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:hint="비밀번호"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/idInput"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pwEditText"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+           />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pwcheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:hint="비밀번호 확인"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/pwInput">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pwOKedit"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/mailVerify"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:text="웹메일로 재학생 인증 후 가입하기"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/pwcheck"
+        android:layout_marginTop="20dp"/>
+
+
+</RelativeLayout>
