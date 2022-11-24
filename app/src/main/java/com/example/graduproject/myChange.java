@@ -5,9 +5,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +20,15 @@ public class myChange extends AppCompatActivity {
 
     private EditAdapter adapter;
     TextView picChange;
+    Button signoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mychage);
 
-        picChange = (TextView)findViewById(R.id.picChange);
+        signoutBtn = findViewById(R.id.signoutBtn);
+        picChange = findViewById(R.id.picChange);
         //프로필 사진 변경
         picChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +39,15 @@ public class myChange extends AppCompatActivity {
 
         init();
         getData();
+
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(myChange.this,login.class));
+            }
+        });
 
 
     }
@@ -67,5 +82,7 @@ public class myChange extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
+
+
 
 }
