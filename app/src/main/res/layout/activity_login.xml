@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:orientation="vertical"
+    android:id="@+id/loginActivity">
+
+    <TextView
+        android:id="@+id/fretzel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프레즐"
+        android:textSize="50sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:hint="학교 웹메일"
+        android:id="@+id/userMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mailEdit"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pwEdit"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="280dp"
+        android:layout_height="65dp"
+        android:text="로그인"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#bb97f0"/>
+    
+    <TextView
+        android:id="@+id/signupBtn"
+        android:bufferType="spannable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아직 계정이 없으신가요? 회원가입하기"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"/>
+
+
+</LinearLayout>
