@@ -9,11 +9,11 @@
     <TextView
         android:id="@+id/signText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="회원가입"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="15dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idInput"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:hint="학교 웹메일"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/signText">
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textEmailAddress"
@@ -37,7 +37,7 @@
         app:passwordToggleEnabled="true"
         android:hint="비밀번호"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/idInput"
         >
         <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +55,7 @@
         app:passwordToggleEnabled="true"
         android:hint="비밀번호 확인"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/pwInput">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pwOKedit"
@@ -67,13 +67,14 @@
 
     <Button
         android:id="@+id/mailVerify"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
-        android:text="웹메일로 재학생 인증 후 가입하기"
-        android:textSize="16sp"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:text="웹메일로 재학생 인증"
+        android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/pwcheck"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#bb97f0"/>
 
 
 </RelativeLayout>
