@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1050888421741",
+    "firebase_url": "https://android-pretzel-default-rtdb.firebaseio.com",
     "project_id": "android-pretzel",
     "storage_bucket": "android-pretzel.appspot.com"
   },
