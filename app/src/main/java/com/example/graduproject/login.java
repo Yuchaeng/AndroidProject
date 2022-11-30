@@ -58,7 +58,7 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-        //이미 로그인 되어있으면 바로 홈화면으로
+        //자동 로그인 - 이미 로그인 되어있으면 바로 홈화면으로
         if(mAuth.getCurrentUser() != null) {
             Toast.makeText(login.this,"자동로그인 되었습니다.",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,MainActivity.class));
@@ -91,7 +91,7 @@ public class login extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userEmail = mailEdit.getText().toString();
+                String userEmail = mailEdit.getText().toString(); //userMail.getEditText()는 오류
                 String userPassword = passEdit.getText().toString();
 
                 if(!userEmail.isEmpty() && !userPassword.isEmpty()) {
@@ -125,6 +125,7 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(login.this, signup.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -150,7 +151,7 @@ public class login extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(login.this,"로그인 성공",Toast.LENGTH_LONG).show();
-                            movePage(mAuth.getCurrentUser());
+                            movePage(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
