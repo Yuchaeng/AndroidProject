@@ -54,11 +54,189 @@
                 />
        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:nestedScrollingEnabled="false"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/nicknameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textSize="22sp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/nickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_below="@+id/nicknameTitle"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/nickNameChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textSize="25sp"
+                android:layout_below="@+id/nicknameTitle"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_recycle" />
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/emptyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공강시간"
+                android:textSize="22sp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/whenEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_below="@+id/emptyTitle"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/emptyTimeChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textSize="25sp"
+                android:layout_below="@+id/emptyTitle"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/interestTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="관심사 및 특징"
+                android:textSize="22sp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/whatInterest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_below="@+id/interestTitle"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/interestChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textSize="25sp"
+                android:layout_below="@+id/interestTitle"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/oneLineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한줄소개"
+                android:textSize="22sp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/writeIntroduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_below="@+id/oneLineTitle"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/introduceChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textSize="25sp"
+                android:layout_below="@+id/oneLineTitle"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textSize="22sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/whatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생일"
+            android:textSize="22sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/whatBrith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별"
+            android:textSize="22sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/whatGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학과/학번"
+            android:textSize="22sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/deptId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="30dp"/>
+
 
         <Button
             android:layout_marginTop="10dp"
@@ -66,7 +244,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/signoutBtn"
             android:text="로그아웃"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/deleteUser"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원탈퇴"
+            android:textSize="15sp"
+            android:layout_marginLeft="30dp"/>
 
     </LinearLayout>
 
