@@ -40,6 +40,7 @@
             android:layout_weight="2"
             android:paddingLeft="-35dp">
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/myImage"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,9 +49,9 @@
                 app:civ_border_width="0dp" />
 
             <TextView
+                android:id="@+id/myNickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="닉네임"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp" />
         </LinearLayout>
@@ -93,13 +94,11 @@
                 android:textColor="#bb97f0"
                 android:textSize="15sp" />
 
-<!--아래 텍스트뷰는 화면 보여주는용,
-프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
             <TextView
+                android:id="@+id/myBreak"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="월 13시~15시"
                 android:textSize="20sp"
                 />
         </LinearLayout>
@@ -122,13 +121,11 @@
                 android:textSize="15sp"
                 android:textColor="#bb97f0"
                 android:drawableTop="@drawable/interest" />
-            <!--아래 텍스트뷰는 화면 보여주는용,
-프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
             <TextView
+                android:id="@+id/myfeature"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="entp"
                 android:textSize="20sp"
                 />
         </LinearLayout>
@@ -151,13 +148,11 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 />
-            <!--아래 텍스트뷰는 화면 보여주는용,
-프로필 편집화면에서 값 가져와서 표시하려면 자바로 해야할듯-->
             <TextView
+                android:id="@+id/onlineText"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="잘 부탁해용~~~"
                 android:textSize="20sp"
                 />
         </LinearLayout>
