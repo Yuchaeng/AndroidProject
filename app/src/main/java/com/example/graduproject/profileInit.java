@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class profileInit extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     String birthString;
+
 
     private String[] selectDept = {"기계시스템디자인공학과","기계ㆍ자동차공학과","안전공학과","신소재공학과","건설시스템공학과", "건축학부(건축공학전공)","건축학부(건축학전공)",
         "[계약학과]건축기계설비공학과","전기정보공학과","전자IT미디어공학과","컴퓨터공학과","스마트ICT융합공학과","화공생명공학과","환경공학과","식품공학과","정밀화학과","스포츠과학과",
