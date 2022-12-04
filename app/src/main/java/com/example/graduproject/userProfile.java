@@ -1,6 +1,8 @@
 package com.example.graduproject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class userProfile {
     String uid;
@@ -16,7 +18,6 @@ public class userProfile {
     String interest;
     String introduce;
 
-    int changed;
 
     //생성자
     public userProfile() {}
