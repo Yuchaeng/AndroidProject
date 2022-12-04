@@ -24,12 +24,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,12 +63,12 @@ public class login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
         //자동 로그인 - 이미 로그인 되어있으면 바로 홈화면으로
         if(mAuth.getCurrentUser() != null) {
             Toast.makeText(login.this,"자동로그인 되었습니다.",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,MainActivity.class));
             finish();
+
         }
 
         mailEdit.addTextChangedListener(new TextWatcher() {
@@ -103,9 +109,6 @@ public class login extends AppCompatActivity {
                 }
             }
         });
-
-
-
 
        //회원가입 화면으로 전환
         String signup = signupBtn.getText().toString();
