@@ -39,15 +39,24 @@ public class nickNameChange extends AppCompatActivity {
 
         Intent secondIntent = getIntent();
         String originName = secondIntent.getStringExtra("nickname");
-        inputNickname.setText(originName);
+        if(!originName.equals("닉네임을 설정해주세요.")) {
+            inputNickname.setText(originName);
+        }
 
         nameComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String nickName = inputNickname.getText().toString();
+                String message = "닉네임을 설정해주세요.";
                 userProfile user = new userProfile();
-                user.setNickName(nickName);
-                mDatabaseRef.child("userInfo").child(mUser.getUid()).child("nickName").setValue(nickName);
+                if(nickName.isEmpty()) {
+                    user.setNickName(message);
+                    mDatabaseRef.child("userInfo").child(mUser.getUid()).child("nickName").setValue(message);
+                }
+                else{
+                    user.setNickName(nickName);
+                    mDatabaseRef.child("userInfo").child(mUser.getUid()).child("nickName").setValue(nickName);
+                }
                 startActivity(new Intent(nickNameChange.this,myChange.class));
                 finish();
 
