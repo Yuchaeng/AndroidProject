@@ -65,6 +65,8 @@ public class profileInit extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
+        String initNickname = "곽곽"+(int)(Math.random()*1000);
+
 
         //생년월일을 문자 변수에 저장 -> db에 넘겨서 마이페이지에 띄울 것임
         birth.init(birth.getYear(), birth.getMonth(), birth.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
@@ -108,7 +110,7 @@ public class profileInit extends AppCompatActivity {
                 info.setDept(deptText);
                 info.setStudentId(idText);
 
-                info.setNickName("닉네임을 설정해주세요.");
+                info.setNickName(initNickname);
                 info.setEmptyTime("공강시간을 설정해주세요.");
                 info.setInterest("관심사 및 특징을 설정해주세요.");
                 info.setIntroduce("한줄소개를 작성해주세요.");

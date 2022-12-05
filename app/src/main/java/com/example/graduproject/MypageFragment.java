@@ -98,12 +98,7 @@ public class MypageFragment extends Fragment {
                 String emptyString = info.getEmptyTime();
                 String interestString = info.getInterest();
 
-                if(nickName.equals("닉네임을 설정해주세요.")) {
-                    myNickname.setText("닉네임 없음");
-                }
-                else {
-                    myNickname.setText(nickName);
-                }
+                myNickname.setText(nickName);
                 onlineText.setText(introduce);
                 myBreak.setText(emptyString);
                 myFeature.setText(interestString);

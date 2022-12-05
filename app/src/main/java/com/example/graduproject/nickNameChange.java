@@ -47,7 +47,7 @@ public class nickNameChange extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nickName = inputNickname.getText().toString();
-                String message = "닉네임을 설정해주세요.";
+                String message = "곽곽"+(int)(Math.random()*1000);
                 userProfile user = new userProfile();
                 if(nickName.isEmpty()) {
                     user.setNickName(message);
