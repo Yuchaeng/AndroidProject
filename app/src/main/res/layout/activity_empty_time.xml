@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".emptyTime"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공강시간"
+            android:textSize="27sp"
+            android:layout_marginLeft="80dp" />
+
+        <TextView
+            android:id="@+id/emptyComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:textSize="23sp"
+            android:textColor="#bb97f0"
+            android:layout_marginLeft="60dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공강시간을 추가해주세요."
+        android:textSize="17sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center">
+        <Spinner
+            android:id="@+id/selectDay"
+            android:layout_gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="50dp" />
+
+        <Spinner
+            android:id="@+id/selectAmPm"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addTimeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="시간 ex)9시~10시">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addTime"
+                android:layout_width="150dp"
+                android:layout_height="50dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <CheckBox
+            android:id="@+id/checkAllday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종일"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:text="+  추가하기"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/profile_draw"/>
+
+    <ListView
+        android:id="@+id/resultList"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+
+</LinearLayout>
