@@ -119,6 +119,7 @@ public class MypageFragment extends Fragment {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
 
+
             }
         });
 

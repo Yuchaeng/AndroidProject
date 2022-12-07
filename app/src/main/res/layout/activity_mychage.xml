@@ -56,32 +56,35 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/nicknameTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:text="닉네임"
-                android:textSize="22sp"
-                android:layout_marginLeft="30dp"/>
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/nickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_below="@+id/nicknameTitle"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/nickNameChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=">"
-                android:textSize="25sp"
                 android:layout_below="@+id/nicknameTitle"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:text=">"
+                android:textSize="25sp"
+                android:layout_marginTop="5dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -93,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="공강시간"
-                android:textSize="22sp"
+                android:textSize="15sp"
                 android:layout_marginLeft="30dp"/>
 
             <TextView
@@ -102,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_below="@+id/emptyTitle"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/emptyTimeChange"
@@ -112,7 +116,8 @@
                 android:textSize="25sp"
                 android:layout_below="@+id/emptyTitle"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -124,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="관심사 및 특징"
-                android:textSize="22sp"
+                android:textSize="15sp"
                 android:layout_marginLeft="30dp"/>
 
             <TextView
@@ -133,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_below="@+id/interestTitle"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/interestChange"
@@ -143,7 +149,8 @@
                 android:textSize="25sp"
                 android:layout_below="@+id/interestTitle"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -155,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="한줄소개"
-                android:textSize="22sp"
+                android:textSize="15sp"
                 android:layout_marginLeft="30dp"/>
 
             <TextView
@@ -164,7 +171,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_below="@+id/oneLineTitle"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/introduceChange"
@@ -174,14 +182,15 @@
                 android:textSize="25sp"
                 android:layout_below="@+id/oneLineTitle"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"/>
         </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이름"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"/>
 
@@ -190,13 +199,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="생일"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"/>
 
@@ -205,28 +215,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="성별"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/whatGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="학과/학번"
-            android:textSize="22sp"
+            android:textSize="15sp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"/>
 
@@ -235,25 +247,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
 
 
-        <Button
+        <TextView
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/signoutBtn"
+            android:id="@+id/signoutUser"
             android:text="로그아웃"
-            android:textSize="15sp"
-            android:layout_marginLeft="30dp"/>
+            android:textSize="18sp"
+            android:textColor="#f7570b"
+            android:layout_marginLeft="30dp" />
 
-        <Button
+        <TextView
             android:id="@+id/deleteUser"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원탈퇴"
-            android:textSize="15sp"
+            android:textSize="18sp"
+            android:textColor="#f7570b"
             android:layout_marginLeft="30dp"/>
 
     </LinearLayout>

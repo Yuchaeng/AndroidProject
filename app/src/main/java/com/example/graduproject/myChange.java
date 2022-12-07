@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -54,8 +55,7 @@ import java.util.Map;
 public class myChange extends AppCompatActivity {
 
     TextView picChange, whatName, whatBirth, whatGender, deptId, nickName, whenEmpty,
-    whatInterest, writeIntroduce, nickNameChage, introduceChange, emptyTimeChange;
-    Button signoutBtn;
+    whatInterest, writeIntroduce, nickNameChage, introduceChange, emptyTimeChange, interstChange, signoutUser, deleteUser;
     ImageView profileImg;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
@@ -85,8 +85,10 @@ public class myChange extends AppCompatActivity {
         nickNameChage = findViewById(R.id.nickNameChange);
         introduceChange = findViewById(R.id.introduceChange);
         emptyTimeChange = findViewById(R.id.emptyTimeChange);
+        interstChange = findViewById(R.id.interestChange);
 
-        signoutBtn = findViewById(R.id.signoutBtn);
+        signoutUser = findViewById(R.id.signoutUser);
+        deleteUser = findViewById(R.id.deleteUser);
         picChange = findViewById(R.id.picChange);
         profileImg = findViewById(R.id.myPicture);
 
@@ -149,6 +151,18 @@ public class myChange extends AppCompatActivity {
 
         }
 
+        //프로필사진 변경
+        picChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                launcher.launch(intent);
+
+            }
+        });
+
         //닉네임 변경
         nickNameChage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,17 +174,26 @@ public class myChange extends AppCompatActivity {
             }
         });
 
-        //프로필 변경
-        picChange.setOnClickListener(new View.OnClickListener() {
+        //공강시간 추가
+        emptyTimeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                launcher.launch(intent);
-
+                Intent intent = new Intent(myChange.this,emptyTime.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+        //관심사 추가
+        interstChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(myChange.this,interest.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         //한줄소개 변경
         introduceChange.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +210,8 @@ public class myChange extends AppCompatActivity {
 
 
         //로그아웃
-        signoutBtn.setOnClickListener(new View.OnClickListener() {
+        signoutUser.setPaintFlags(signoutUser.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        signoutUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
@@ -195,6 +219,9 @@ public class myChange extends AppCompatActivity {
                 startActivity(new Intent(myChange.this,login.class));
             }
         });
+
+        //회원탈퇴
+        deleteUser.setPaintFlags(deleteUser.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
     } //oncreate 끝

@@ -44,7 +44,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:src="@drawable/cat_temp"
                 app:civ_border_width="0dp" />
 
@@ -99,7 +99,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 />
         </LinearLayout>
 
@@ -126,7 +126,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 />
         </LinearLayout>
 
@@ -153,7 +153,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 />
         </LinearLayout>
 
@@ -169,7 +169,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:text="내가 작성한 글"
-       android:textSize="20sp"
+       android:textSize="18sp"
        android:layout_margin="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
