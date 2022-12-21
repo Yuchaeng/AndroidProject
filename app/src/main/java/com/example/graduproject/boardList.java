@@ -2,20 +2,29 @@ package com.example.graduproject;
 
 
 
-public class boardData {
+public class boardList {
 
     private String mustText;
     private String writeTime;
     private String writeTitle;
+    private String writeContent;
     private String nickName;
-    private String commentCount;
+    private int commentCount;
 
 
-    public String getCommentCount() {
+    public String getWriteContent() {
+        return writeContent;
+    }
+
+    public void setWriteContent(String writeContent) {
+        this.writeContent = writeContent;
+    }
+
+    public Integer getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(String commentCount) {
+    public void setCommentCount(Integer commentCount) {
         this.commentCount = commentCount;
     }
 

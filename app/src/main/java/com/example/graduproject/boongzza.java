@@ -1,68 +1,150 @@
 package com.example.graduproject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class boongzza extends AppCompatActivity {
-    private FloatingActionButton writeBtn;
-    private BoardAdapter adapter;
+    FloatingActionButton writeBtn;
+    ListView boongzzaList;
+    postAdapter pa;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseUser mUser;
+    ArrayList<String> allTitles = new ArrayList<String>();
+    ArrayList<String> allContents = new ArrayList<String>();
+    ArrayList<String> allTimes = new ArrayList<String>();
+    //ArrayList<String> nickName = new ArrayList<String>();
+    ArrayList<String> mustText = new ArrayList<String>();
+    ArrayList<Integer> commentCounts = new ArrayList<Integer>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boongzza);
 
-        RecyclerView boongzza_recycle = findViewById(R.id.boongzzaRecycle);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        boongzza_recycle.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, linearLayoutManager.getOrientation());
-        boongzza_recycle.addItemDecoration(dividerItemDecoration);
-        adapter = new BoardAdapter();
-        boongzza_recycle.setAdapter(adapter);
-        getData();
 
+
+        //setTheme(com.google.android.material.R.style.Theme_MaterialComponents);
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+
+        boongzzaList = findViewById(R.id.boongzzaList);
+
+        String boardName = "붕짜게시판";
 
 
         writeBtn = (FloatingActionButton) findViewById(R.id.writeBtn);
         writeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), boongzzawrite.class);
+                Intent intent = new Intent(boongzza.this, boongzzawrite.class);
+                intent.putExtra("boardName",boardName);
                 startActivity(intent);
+                finish();
             }
         });
 
 
-    }
-    private void getData() {
-        List<String> mustList = Arrays.asList("2022/11/02,오후3시,2명,여성","2022/10/30,오전11시,4명,성별무관");
-        List<String> titleList = Arrays.asList("붕짜할사람","다음주 붕짜하실 분");
-        List<String> timeList = Arrays.asList("10/27 13:21","10/24 16:00");
-        List<String> nameList = Arrays.asList("붕붕이","곽곽이");
-        List<String> commentList = Arrays.asList("1","3");
+        pa = new postAdapter();
+        boongzzaList.setAdapter(pa);
+        getBoongPost();
 
-        for(int i=0; i<mustList.size();i++) {
-            boardData boardData = new boardData();
-            boardData.setMustText(mustList.get(i));
-            boardData.setWriteTitle(titleList.get(i));
-            boardData.setWriteTime(timeList.get(i));
-            boardData.setNickName(nameList.get(i));
-            boardData.setCommentCount(commentList.get(i));
+        boongzzaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(boongzza.this,position+"클릭",Toast.LENGTH_SHORT).show();
+                mDatabaseRef.child("allPosts").child("boongzza").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-            adapter.addBoardItem(boardData);
-        }
-        adapter.notifyDataSetChanged();
+                            String key = snapshot.getKey();
+                            Log.d("tag",key);
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+        });
+
+
+
     }
+
+    public void getBoongPost() {
+        DatabaseReference boong = mDatabaseRef.child("allPosts").child("boongzza");
+        boong.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if(dataSnapshot == null) {
+                        TextView textView = new TextView(getApplicationContext());
+                        textView.setText("아직 게시글이 없어요.");
+                        break;
+                    }
+                    postModel mypostModel = dataSnapshot.getValue(postModel.class);
+                    pa.addItem(mypostModel.getPostTitle(), mypostModel.getPostContent(),
+                            mypostModel.getMustKeep(), mypostModel.getWriterName(),mypostModel.getWriteTime(), mypostModel.getCommentCount());
+
+                    if(!mypostModel.isRecruit()) {
+                        pa.setBtn();
+                    }
+
+                }
+                pa.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }
