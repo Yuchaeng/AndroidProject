@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".boongzza"
-    android:orientation="vertical">
+    tools:context=".boongzza">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:descendantFocusability="blocksDescendants">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:gravity="center"
-        android:layout_marginBottom="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:text="붕짜게시판"
-            android:textSize="27sp"
-            android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="12dp"
+        android:text="붕짜게시판"
+        android:textSize="27sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/noticedraw"/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/noticedraw" />
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/boongzzaRecycle"
+    <ListView
+        android:layout_marginTop="5dp"
+        android:id="@+id/boongzzaList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"/>
+        android:stackFromBottom="true"/>
+
+</LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/writeBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:src="@drawable/pencil"
-        android:backgroundTint="#e9def9"
         android:layout_gravity="end|bottom"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="150dp" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#e9def9"
+        android:src="@drawable/pencil">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

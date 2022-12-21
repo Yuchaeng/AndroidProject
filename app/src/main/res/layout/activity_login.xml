@@ -8,14 +8,12 @@
     android:orientation="vertical"
     android:id="@+id/loginActivity">
 
-    <TextView
-        android:id="@+id/fretzel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="프레즐"
-        android:textSize="50sp"
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="100dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
 

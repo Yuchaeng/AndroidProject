@@ -67,6 +67,8 @@ public class interest extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    //뒤로가기하면 프로필 편집 화면 나오도록 추가해야함
+
     @Override
     public void onClick(View view) {
         Button newButton = (Button) view;
@@ -87,6 +89,8 @@ public class interest extends AppCompatActivity implements View.OnClickListener 
            // Log.d(TAG,"출력"+selectArray);
         }
     }
+
+
 
 
 }

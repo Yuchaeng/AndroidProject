@@ -17,8 +17,6 @@ import java.util.ArrayList;
 
  public class emptyListAdapter extends BaseAdapter {
 
-
-
     private TextView content;
     private ImageButton closeBtn;
 
