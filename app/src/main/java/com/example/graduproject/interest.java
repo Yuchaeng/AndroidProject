@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +29,17 @@ public class interest extends AppCompatActivity implements View.OnClickListener 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
     private FirebaseUser mUser;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode ==KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(interest.this, myChange.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
 
     @Override

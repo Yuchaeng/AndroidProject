@@ -11,13 +11,58 @@ public class postModel {
     String writeTime;
     String writerName;
 
-    String mustKeep;
+    String type;
+
+    String date;
+    String time;
+    String people;
+    String gender;
     String postTitle;
     String postContent;
     int commentCount;
     boolean recruit;
 
     public postModel() {}
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getPeople() {
+        return people;
+    }
+
+    public void setPeople(String people) {
+        this.people = people;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getCommentCount() {
         return commentCount;
@@ -59,13 +104,6 @@ public class postModel {
         this.writeTime = writeTime;
     }
 
-    public String getMustKeep() {
-        return mustKeep;
-    }
-
-    public void setMustKeep(String mustKeep) {
-        this.mustKeep = mustKeep;
-    }
 
     public String getPostTitle() {
         return postTitle;
@@ -91,30 +129,5 @@ public class postModel {
         this.recruit = recruit;
     }
 
-//    public postModel(String boardName, String writerUid, String writeTime,
-//                     String mustKeep, String postTitle, String postContent, boolean recruit) {
-//        this.boardName = boardName;
-//        this.writerUid = writerUid;
-//
-//        this.writeTime = writeTime;
-//        this.mustKeep = mustKeep;
-//        this.postTitle = postTitle;
-//        this.postContent = postContent;
-//        this.recruit = recruit;
-//    }
 
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("boardName",boardName);
-        result.put("writerUid",writerUid);
-
-        result.put("writeTime",writeTime);
-        result.put("mustKeep",mustKeep);
-        result.put("postTitle",postTitle);
-        result.put("postContent",postContent);
-        result.put("recruit",recruit);
-
-        return result;
-    }
 }

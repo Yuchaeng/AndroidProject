@@ -1,11 +1,13 @@
 package com.example.graduproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,8 +16,11 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class nickNameChange extends AppCompatActivity {
     TextView nameComplete;
@@ -23,6 +28,16 @@ public class nickNameChange extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private DatabaseReference mDatabaseRef;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode ==KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(nickNameChange.this, myChange.class));
+            finish();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

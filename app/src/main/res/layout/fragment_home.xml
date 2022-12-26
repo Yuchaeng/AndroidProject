@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="프레즐"
             android:layout_marginLeft="130dp"
-            android:textSize="27sp" />
+            android:textSize="25sp" />
 
         <ImageView
             android:id="@+id/bell"
@@ -35,7 +35,7 @@
     <ViewFlipper
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="170dp" />
+        android:layout_height="180dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,6 +69,7 @@
             android:textSize="15sp" />
 
         <Button
+            android:id="@+id/mealBtn"
             android:layout_width="80dp"
             android:layout_height="85dp"
             android:layout_marginRight="10dp"
@@ -80,6 +81,7 @@
             android:textSize="15sp"/>
 
         <Button
+            android:id="@+id/exerciseBtn"
             android:layout_width="80dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -96,6 +98,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <Button
+            android:id="@+id/studyBtn"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -108,6 +111,7 @@
             />
 
         <Button
+            android:id="@+id/freeBtn"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_weight="1"

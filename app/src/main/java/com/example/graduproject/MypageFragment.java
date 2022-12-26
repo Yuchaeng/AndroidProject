@@ -19,6 +19,7 @@ import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -60,6 +61,8 @@ public class MypageFragment extends Fragment {
 
     CustomAdapter ca;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +82,7 @@ public class MypageFragment extends Fragment {
         myFeature = (TextView) view.findViewById(R.id.myfeature);
         resultList = (ListView) view.findViewById(R.id.myPostlist);
         noMyPost = (TextView) view.findViewById(R.id.noMyPost);
+        LinearLayout myPage = (LinearLayout) view.findViewById(R.id.myPage);
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -108,7 +112,7 @@ public class MypageFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Glide.with(getActivity()).load(R.drawable.cat_temp).into(myImage);
+                    Glide.with(getActivity()).load(R.drawable.no_profile_image).into(myImage);
                 }
             });
 
@@ -153,6 +157,74 @@ public class MypageFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getUserPost();
+
+        //프로필사진 띄우기
+        StorageReference imgRef = storageRef.child("UserProfile").child(mUser.getUid()+"_img");
+        if(imgRef!=null) { //profile.getProfileImageUrl() != null
+            imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(getActivity())
+                            .load(uri)
+                            .into(myImage);
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Glide.with(getActivity()).load(R.drawable.no_profile_image).into(myImage);
+                }
+            });
+
+        }
+
+        //닉네임,공강,관심사,한줄소개 띄우기
+        mDatabaseRef.child("userInfo").child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userProfile info = snapshot.getValue(userProfile.class);
+                String nickName = info.getNickName();
+                String introduce = info.getIntroduce();
+                String emptyString = info.getEmptyTime();
+                String interestString = info.getInterest();
+
+                myNickname.setText(nickName);
+                onlineText.setText(introduce);
+                myBreak.setText(emptyString);
+                myFeature.setText(interestString);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        //프로필 편집 버튼
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), myChange.class); //fragment라서 activity intent와는 다른 방식
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+
     class CustomAdapter extends BaseAdapter {
 
 

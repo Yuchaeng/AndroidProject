@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,17 @@ public class introduce extends AppCompatActivity {
     TextInputEditText inputAboutme;
     private FirebaseUser mUser;
     private DatabaseReference mDatabaseRef;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode ==KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(introduce.this, myChange.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

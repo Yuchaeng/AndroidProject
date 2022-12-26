@@ -15,7 +15,7 @@ import android.widget.ViewFlipper;
 
 public class HomeFragment extends Fragment {
 
-    private Button boongzzaBtn;
+    Button boongzzaBtn, mealBtn, exerciseBtn, studyBtn, freeBtn;
     ViewFlipper v_fllipper;
 
 
@@ -30,13 +30,18 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-       int images[] = {R.drawable.banner_img1, R.drawable.banner_img2};
+       int images[] = {R.drawable.banner_temp_1, R.drawable.banner_temp_2, R.drawable.banner_3};
        v_fllipper = (ViewFlipper) view.findViewById(R.id.pager);
        for(int image : images) {
            fllipperImages(image);
        }
 
         boongzzaBtn = (Button)view.findViewById(R.id.boongzzaBtn);
+        mealBtn = (Button) view.findViewById(R.id.mealBtn);
+        exerciseBtn = (Button)view.findViewById(R.id.exerciseBtn);
+        studyBtn = (Button) view.findViewById(R.id.studyBtn);
+        freeBtn = (Button) view.findViewById(R.id.freeBtn);
+
         boongzzaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,14 +51,56 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        mealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), meal.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
+        exerciseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), exercise.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+            }
+        });
+
+        studyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), study.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+            }
+        });
+
+        freeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), free.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+            }
+        });
+
+
         return view;
     }
+
+
     public void fllipperImages(int image) {
         ImageView imageView = new ImageView(getContext());
         imageView.setBackgroundResource(image);
 
         v_fllipper.addView(imageView);      // 이미지 추가
-        v_fllipper.setFlipInterval(3000);       // 자동 이미지 슬라이드 딜레이시간(1000 당 1초)
+        v_fllipper.setFlipInterval(2500);       // 자동 이미지 슬라이드 딜레이시간(1000 당 1초)
         v_fllipper.setAutoStart(true);          // 자동 시작 유무 설정
 
         // animation

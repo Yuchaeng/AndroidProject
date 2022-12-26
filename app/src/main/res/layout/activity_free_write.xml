@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".freeWrite"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="글쓰기"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="어떤 주제? *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioFree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
+            <RadioButton
+                android:id="@+id/club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동아리"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/learn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수업"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/etc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기타 친목"
+                android:textSize="15sp"/>
+
+        </RadioGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="* 은 필수기입"
+            android:textSize="15sp"
+            android:textColor="#ff0000"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="15dp"
+            android:background="#000000"/>
+
+        <EditText
+            android:id="@+id/inputTitleFree"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#eeeeee"
+            android:hint="제목을 입력하세요."
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/inputContentFree"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="#eeeeee"
+            android:hint="내용을 입력하세요."/>
+
+        <Button
+            android:id="@+id/registerFree"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:background="#e9def9"/>
+    </LinearLayout>
+
+
+</ScrollView>

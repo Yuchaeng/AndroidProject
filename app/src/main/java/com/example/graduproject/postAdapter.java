@@ -1,6 +1,7 @@
 package com.example.graduproject;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,6 @@ import java.util.ArrayList;
 
 public class postAdapter extends BaseAdapter {
     ArrayList<boardList> board = new ArrayList<boardList>();
-    Button ingBtn,closeBtn;
-
 
     @Override
     public int getCount() {
@@ -40,16 +39,28 @@ public class postAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.board,parent,false);
         }
 
-        convertView.findViewById(R.id.ingBtn);
-        convertView.findViewById(R.id.ingClose);
+        Button ingBtn = convertView.findViewById(R.id.ingBtn);
+        Button closeBtn = convertView.findViewById(R.id.ingClose);
         TextView boardMust = convertView.findViewById(R.id.boardMust);
         TextView boardTitle = convertView.findViewById(R.id.boardTitle);
         TextView boardContent = convertView.findViewById(R.id.boardContent);
         TextView writerName = convertView.findViewById(R.id.writerName);
         TextView boardTime = convertView.findViewById(R.id.boardTime);
         TextView commentCount = convertView.findViewById(R.id.commentCount);
+        TextView whatType = convertView.findViewById(R.id.whatType);
 
         boardList boardList = board.get(position);
+
+
+
+        if(boardList.getWhatType()!=null) {
+            whatType.setVisibility(View.VISIBLE);
+            whatType.setText(boardList.getWhatType());
+            whatType.setTextColor(Color.parseColor("#F578CF"));
+        }
+        else{
+            whatType.setVisibility(View.GONE);
+        }
 
         boardMust.setText(boardList.getMustText());
         boardTitle.setText(boardList.getWriteTitle());
@@ -58,9 +69,18 @@ public class postAdapter extends BaseAdapter {
         boardTime.setText(boardList.getWriteTime());
         commentCount.setText(" "+boardList.getCommentCount());
 
+        if(boardList.getRecruitCheck() == 1) {
+            ingBtn.setVisibility(View.GONE);
+            closeBtn.setVisibility(View.VISIBLE);
+        }
+        else{
+            ingBtn.setVisibility(View.VISIBLE);
+            closeBtn.setVisibility(View.GONE);
+        }
+
         return convertView;
     }
-    public void addItem(String title, String content, String mustText, String nickName, String writeTime, Integer commentCount) {
+    public void addItem(String title, String content, String mustText, String nickName, String writeTime, Integer commentCount, Integer check, String type) {
         boardList item = new boardList();
 
         item.setWriteTitle(title);
@@ -69,12 +89,11 @@ public class postAdapter extends BaseAdapter {
         item.setNickName(nickName);
         item.setWriteTime(writeTime);
         item.setCommentCount(commentCount);
+        item.setRecruitCheck(check);
+        item.setWhatType(type);
 
         board.add(0,item);
     }
-    public void setBtn() {
-        ingBtn.setVisibility(View.GONE);
-        closeBtn.setVisibility(View.VISIBLE);
-    }
+
 
 }
