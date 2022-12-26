@@ -1,171 +1,149 @@
-/*
+
 package com.example.graduproject;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabHost;
+import android.widget.Toast;
 
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class FriendFragment extends Fragment {
+    //recyclerview
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.LayoutManager layoutManager2;
+    UserAdapter mAdapter;
+    UserProfileListAdapter mAdapter2;
 
+    //firebase
+    FirebaseDatabase database;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
-    private TabLayout tabLayout;
-    private ViewPager2 viewPager2;
-    private FragmentStateAdapter adapter;
-    private int num_page = 2;
-
-
+    //arraylist
+    ArrayList<userProfile> userArrayList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        tabLayout = getView().findViewById(R.id.tabs_friend);
-        viewPager2 = getView().findViewById(R.id.view_pager2);
-        adapter = new VPAdapter(this, num_page);
-
-        viewPager2.setAdapter(adapter);
-        viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
-        viewPager2.setCurrentItem(1000);
-        viewPager2.setOffscreenPageLimit(3);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend, container, false);
-    }
-}*/
+        database = FirebaseDatabase.getInstance();
+        View v = inflater.inflate(R.layout.fragment_friend, container, false);
 
-//package com.example.graduproject;
-//
-//import androidx.fragment.app.Fragment;
-//import androidx.fragment.app.FragmentActivity;
-//
-//import android.os.Bundle;
-//
-//import com.google.android.material.tabs.TabLayout;
-//
-//public class FriendFragment extends Fragment {
-//
-//    TabLayout tabs;
-//
-//    FriendTabFragment fragment1;
-//    FriendTabFragment2 fragment2;
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_friend_tab);
+        userArrayList = new ArrayList<>();
 
-//        fragment1 = new FriendTabFragment();
-//        fragment2 = new FriendTabFragment2();
+        RecyclerView recyclerView = v.findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView2 = v.findViewById(R.id.my_recycler_view2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView2.setHasFixedSize(true);
 
-        //getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
+        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager2 = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView2.setLayoutManager(layoutManager2);
 
-        //tabs = findViewById(R.id.tabs);
-//        tabs.addTab(tabs.newTab().setText("친구 목록"));
-//        tabs.addTab(tabs.newTab().setText("추천 친구"));
-//
-//        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                int position = tab.getPosition();
-//                Fragment selected = null;
-//                if (position == 0)
-//                    selected = fragment1;
-//                else if (position == 1)
-//                    selected = fragment2;
-//
-//                getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
+        //firebase에서 data 읽어오기
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
 
-        // });
-//    }
-//}
+                // A new comment has been added, add it to the displayed list
+                userProfile user = dataSnapshot.getValue(userProfile.class);
+                userArrayList.add(user);
+                mAdapter.notifyDataSetChanged();
+                mAdapter2.notifyDataSetChanged();
 
-package com.example.graduproject;
+            }
 
-import android.os.Bundle;
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
 
-import androidx.fragment.app.Fragment;
+                // A comment has changed, use the key to determine if we are displaying this
+                // comment and if so displayed the changed comment.
+                userProfile user = dataSnapshot.getValue(userProfile.class);
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+                // ...
+            }
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FriendFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FriendFragment extends Fragment {
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+                // A comment has changed, use the key to determine if we are displaying this
+                // comment and if so remove it.
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+                // ...
+            }
 
-    public FriendFragment() {
-        // Required empty public constructor
-    }
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FriendFragment newInstance(String param1, String param2) {
-        FriendFragment fragment = new FriendFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+                // A comment has changed position, use the key to determine if we are
+                // displaying this comment and if so move it.
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+                // ...
+            }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend, container, false);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
+                Toast.makeText(getActivity(), "Failed to load comments.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        DatabaseReference databaseReference = database.getReference("userInfo");
+        databaseReference.addChildEventListener(childEventListener);
+
+        //recyclerview adapter
+        mAdapter = new UserAdapter(userArrayList);
+        mAdapter2 = new UserProfileListAdapter(userArrayList);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView2.setAdapter(mAdapter2);
+
+
+
+        TabHost tabHost1 = v.findViewById(R.id.tabHost1);
+        tabHost1.setup();
+
+        TabHost.TabSpec ts1 = tabHost1.newTabSpec("Tab Spec 1");
+        ts1.setContent(R.id.content1);
+        ts1.setIndicator("추천 친구");
+        tabHost1.addTab(ts1);
+
+        TabHost.TabSpec ts2 = tabHost1.newTabSpec("Tab Spec 2");
+        ts2.setContent(R.id.content2);
+        ts2.setIndicator("친구 목록");
+        tabHost1.addTab(ts2);
+        return v;
     }
 }
 

@@ -10,15 +10,53 @@
 
 
     <TextView
-        android:id="@+id/chat_list"
+        android:id="@+id/friend_name"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:gravity="center"
-        android:text="채팅"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:text="채팅"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="finish"
+            android:id="@+id/btnFinish"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnFinish"
+            app:layout_constraintBottom_toTopOf="@id/btnSend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="send"
+            android:id="@+id/btnSend"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnSend"
+            android:id="@+id/etText"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--<LinearLayout
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,5 +90,5 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
 </LinearLayout>

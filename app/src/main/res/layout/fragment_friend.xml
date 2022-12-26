@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/friend_fragment">
 
 
     <TextView
@@ -18,67 +19,97 @@
         android:textAlignment="center"
         android:textSize="30sp" />
 
+    <TabHost
+        android:id="@+id/tabHost1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs_friend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="추천 친구" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="친구 목록" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-       <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
         <LinearLayout
-            android:padding="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/underline">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/shape"/>
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/content1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/friend_name"
-                            android:layout_width="match_parent"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/my_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+
+
+                    <!--<LinearLayout
+                        android:padding="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/underline">
+
+                        <ImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:text="닉네임"/>
+                            android:src="@drawable/shape"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="한줄 소개"/>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingLeft="10dp">
 
+                            <TextView
+                                android:id="@+id/friend_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:text="닉네임"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="한줄 소개"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>-->
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/my_recycler_view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+            </FrameLayout>
+
+
+
         </LinearLayout>
+
+    </TabHost>
+
+
+
 
 
 
