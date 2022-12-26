@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/commentImage"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/no_profile_image"
+        app:civ_border_width="0dp"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/commentWriter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/commentImage"
+        android:text="닉네임"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/commentMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/commentWriter"
+        android:text="| 글쓴이"
+        android:textColor="#C897F3"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/commentContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 내용"
+        android:textColor="#2e2c2c"
+        android:textSize="15sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/commentImage"/>
+
+    <TextView
+        android:id="@+id/commentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 작성 시간"
+        android:textSize="13sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/commentContent"/>
+
+
+</RelativeLayout>
