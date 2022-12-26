@@ -1,133 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".MainActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:layout_marginBottom="65dp">
     <LinearLayout
-        android:id="@+id/homeBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/homeBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="프레즐"
+                android:layout_marginLeft="130dp"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/bell"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/bell" />
+        </LinearLayout>
+
+        <ViewFlipper
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="190dp" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="프레즐"
-            android:layout_marginLeft="130dp"
-            android:textSize="25sp" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="게시판"
+            android:textColor="#292929"
+            android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/bell"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/bell" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/boongzzaBtn"
+                android:layout_width="80dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:paddingTop="10dp"
+                android:drawableTop="@drawable/boong_draw"
+                android:text="붕짜"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/mealBtn"
+                android:layout_width="80dp"
+                android:layout_height="85dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:drawableTop="@drawable/rice_draw"
+                android:paddingTop="10dp"
+                android:text="학식(밥)"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/exerciseBtn"
+                android:layout_width="80dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:drawableTop="@drawable/exercise_draw"
+                android:text="운동"
+                android:textSize="15sp"
+                android:paddingTop="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <Button
+                android:id="@+id/studyBtn"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_shape"
+                android:drawableTop="@drawable/study_draw"
+                android:text="스터디"
+                android:textSize="15sp"
+                android:paddingTop="10dp"
+                />
+
+            <Button
+                android:id="@+id/freeBtn"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:drawableTop="@drawable/free_draw"
+                android:text="자유"
+                android:textSize="15sp"
+                android:paddingTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#DABFE8"
+            android:layout_marginTop="35dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동아리"
+                android:textColor="#292929"
+                android:textSize="20sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="친구를 사귀기엔 동아리가 제격이죠.😉"
+                android:layout_marginStart="25dp"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_background"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="이달의 동아리 추천 및 소개 ✨"
+                    android:textSize="17sp"
+                    android:textColor="#292929"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/club1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="컴공 과동아리"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="50dp"/>
+                    <TextView
+                        android:id="@+id/darak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="'다락방'"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/club1"/>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/darak_image"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentEnd="true"/>
+                    <TextView
+                        android:id="@+id/club1Intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="컴공 주목! 짱동아리 다락방입니다.\n재미 보장에 스터디까지~ 놀러오세요~"
+                        android:textSize="14sp"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/club1"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#909090"
+                    android:layout_margin="5dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:id="@+id/clubLogo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="13dp"
+                        android:src="@drawable/atst"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/club2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/clubLogo"
+                        android:text="중앙동아리"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/centerClub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="'아티스트'"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/club2"/>
+
+                    <TextView
+                        android:id="@+id/club2Intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="누구나 환영하는 동아리 아티스트입니다.\n적정기술 공부, 공모전까지! 함께해요~"
+                        android:textSize="14sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/club2"
+                        android:layout_toEndOf="@+id/clubLogo"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동아리 소개는 매달 변경됩니다.\n다음 달엔 어떤 동아리가..?!"
+                android:textSize="15sp"
+                android:textColor="#3B383C"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 관심사를 기반으로 한"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="동아리 추천받기"
+                android:background="@drawable/layout_background"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"/>
+
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <ViewFlipper
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="180dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="게시판"
-        android:textSize="20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp">
-
-        <Button
-            android:id="@+id/boongzzaBtn"
-            android:layout_width="80dp"
-            android:layout_height="85dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:paddingTop="10dp"
-            android:drawableTop="@drawable/boong_draw"
-            android:text="붕짜"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/mealBtn"
-            android:layout_width="80dp"
-            android:layout_height="85dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:drawableTop="@drawable/rice_draw"
-            android:paddingTop="10dp"
-            android:text="학식(밥)"
-            android:textSize="15sp"/>
-
-        <Button
-            android:id="@+id/exerciseBtn"
-            android:layout_width="80dp"
-            android:layout_height="85dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:drawableTop="@drawable/exercise_draw"
-            android:text="운동"
-            android:textSize="15sp"
-            android:paddingTop="10dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-        <Button
-            android:id="@+id/studyBtn"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_shape"
-            android:drawableTop="@drawable/study_draw"
-            android:text="스터디"
-            android:textSize="15sp"
-            android:paddingTop="10dp"
-            />
-
-        <Button
-            android:id="@+id/freeBtn"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:drawableTop="@drawable/free_draw"
-            android:text="자유"
-            android:textSize="15sp"
-            android:paddingTop="5dp"/>
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:src="@drawable/meeting" />
 
 
-</LinearLayout>
+</ScrollView>
