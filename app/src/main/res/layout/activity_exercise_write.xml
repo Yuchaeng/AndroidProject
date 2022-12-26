@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".exerciseWrite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="글쓰기"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="무슨 운동할까 *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioExer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
+            <RadioButton
+                android:id="@+id/soccer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="축구"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/basket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="농구"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="러닝"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/bad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="배드민턴"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:id="@+id/ect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기타"
+                android:textSize="15sp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜 *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp">
+
+            <RadioButton
+                android:id="@+id/selectDateExer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜 선택"
+                android:textSize="15sp"/>
+
+            <!--        날짜 선택되면 띄울 텍스트뷰-->
+            <TextView
+                android:id="@+id/dateTextExer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginLeft="35dp"
+                android:visibility="gone"/>
+
+            <RadioButton
+                android:id="@+id/noSelectExer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="정기적"
+                android:textSize="15sp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간 *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/timeSpinnerExer"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/inputTimeExer"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:hint="시간 입력" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="인원수 *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <Spinner
+            android:id="@+id/countSpinnerExer"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별 *"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <Spinner
+            android:id="@+id/genderSpinnerExer"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="* 은 필수기입"
+            android:textSize="15sp"
+            android:textColor="#ff0000"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="15dp"
+            android:background="#000000"/>
+
+        <EditText
+            android:id="@+id/inputTitleExer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#eeeeee"
+            android:hint="제목을 입력하세요."
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/inputContentExer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="#eeeeee"
+            android:hint="어디서 무슨 운동을 할까요?"/>
+
+        <Button
+            android:id="@+id/registerExer"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:background="#e9def9"/>
+    </LinearLayout>
+
+
+</ScrollView>

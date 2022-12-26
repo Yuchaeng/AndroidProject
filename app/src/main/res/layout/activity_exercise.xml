@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".exercise">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:descendantFocusability="blocksDescendants">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="운동게시판"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:padding="0dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/exerImageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/noPostExer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아직 게시글이 없어요."
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <ListView
+            android:layout_marginTop="5dp"
+            android:id="@+id/exerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/exerWriteBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#e9def9"
+        android:src="@drawable/pencil">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

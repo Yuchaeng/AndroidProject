@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".exercisePostDetail"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="운동게시판"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/detailIngExer"
+                    android:layout_width="55dp"
+                    android:layout_height="22dp"
+                    android:text="모집중"
+                    android:textColor="#000"
+                    android:layout_marginStart="20dp"
+                    android:textSize="11sp"
+                    android:background="@drawable/btn_shape_purple"
+                    android:layout_marginTop="5dp"/>
+
+                <Button
+                    android:id="@+id/detailCloseExer"
+                    android:layout_width="55dp"
+                    android:layout_height="22dp"
+                    android:text="모집완료"
+                    android:layout_marginStart="20dp"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_shape_gray"/>
+
+                <TextView
+                    android:id="@+id/detailTimeExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간"
+                    android:textSize="13sp"
+                    android:layout_marginStart="200dp"
+                    android:gravity="end"
+                    android:layout_marginEnd="15dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/detailImageExer"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/no_profile_image"
+                    app:civ_border_width="0dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/detailWriterExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="닉네임"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/detailTitleExer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/whatExer"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="무슨 운동"
+                    android:textSize="15sp"
+                    android:textColor="#d3adf5"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:id="@+id/typeExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="축구"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/whatExer"/>
+                <TextView
+                    android:id="@+id/detailDateExer"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="날짜 및 시간"
+                    android:textSize="15sp"
+                    android:textColor="#d3adf5"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/typeExer"/>
+
+                <TextView
+                    android:id="@+id/detailDateInputExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="몇 월 며칠 몇 시"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/detailDateExer"
+                    android:layout_below="@+id/typeExer"/>
+                <TextView
+                    android:id="@+id/detailPeopleExer"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="인원수"
+                    android:textSize="15sp"
+                    android:textColor="#d3adf5"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/detailDateExer"/>
+                <TextView
+                    android:id="@+id/detailPeopleInputExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="몇 명"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/detailDateExer"
+                    android:layout_toRightOf="@+id/detailPeopleExer"/>
+                <TextView
+                    android:id="@+id/detailGenderExer"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="성별"
+                    android:textSize="15sp"
+                    android:textColor="#d3adf5"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/detailPeopleExer"/>
+
+                <TextView
+                    android:id="@+id/detailGenderInputExer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남여"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/detailPeopleExer"
+                    android:layout_toRightOf="@+id/detailGenderExer"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/detailContentExer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내용"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"/>
+
+            <View
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#909090"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글"
+                android:textSize="15sp"
+                android:textColor="#2e2c2c"
+                android:layout_marginStart="15dp"/>
+
+
+            <ListView
+                android:id="@+id/commentListsExer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp">
+            <EditText
+                android:id="@+id/commentInputExer"
+                android:layout_width="270dp"
+                android:layout_height="40dp"
+                android:hint="댓글을 입력하세요."
+                android:textSize="15sp"
+                android:background="#f0ebf5"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/commentRegisterExer"
+                android:layout_width="65dp"
+                android:layout_height="45dp"
+                android:text="등록"
+                android:background="#e8d9f5"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
