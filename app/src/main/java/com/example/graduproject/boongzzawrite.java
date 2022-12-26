@@ -7,7 +7,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +39,7 @@ public class boongzzawrite extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private RadioButton selectDate,noSelect;
     private Spinner timeSpinner, peopleSpinner, mfSpinner;
-    private String[] timeItem = {"오전","오후"};
+    private String[] timeItem = {"오전","오후","시간 미정"};
     private String[] people = {"2명","3명","4명","5명","6명이상","무관"};
     private String[] genderItem = {"무관","여성만","남성만"};
 
@@ -48,6 +51,17 @@ public class boongzzawrite extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
 
     String boardName;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode == android.view.KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(boongzzawrite.this, boongzza.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,24 +83,9 @@ public class boongzzawrite extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
+
         Intent secondIntent = getIntent();
-        switch (secondIntent.getStringExtra("boardName")) {
-            case "붕짜게시판" :
-                boardName = "붕짜게시판";
-                break;
-            case "학식게시판" :
-                boardName = "학식게시판";
-                break;
-            case "운동게시판" :
-                boardName = "운동게시판";
-                break;
-            case "스터디게시판" :
-                boardName = "스터디게시판";
-                break;
-            case "자유게시판" :
-                boardName = "자유게시판";
-                break;
-        }
+        boardName = secondIntent.getStringExtra("boardName");
 
 
         //날짜 선택
@@ -123,6 +122,23 @@ public class boongzzawrite extends AppCompatActivity {
         //스피너 객체에 어댑터 넣어주기
         timeSpinner.setAdapter(timeAdapter);
 
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if(position == 2) {
+                    inputTime.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    inputTime.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         //인원수 스피너
         ArrayAdapter<String> peopleAdapter = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,people);
         peopleAdapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
@@ -134,11 +150,12 @@ public class boongzzawrite extends AppCompatActivity {
         mfSpinner.setAdapter(mfAdapter);
 
 
+        //글 등록하기
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String dateSelect, timeSelect, peopleSelect, genderSelect, mustSelect, title, content,
-                        writerUid, writerName;
+                        writerUid;
 
                 //날짜 저장
                 if(selectDate.isChecked()) {
@@ -147,12 +164,16 @@ public class boongzzawrite extends AppCompatActivity {
                 else {
                     dateSelect = "날짜 무관/미정";
                 }
-                timeSelect = timeSpinner.getSelectedItem().toString() + inputTime.getText().toString();
+
+                if(inputTime.getText()!=null) {
+                    timeSelect = timeSpinner.getSelectedItem().toString() + "" + inputTime.getText().toString();
+                }
+                else {
+                    timeSelect  = timeSpinner.getSelectedItem().toString();
+                }
                 peopleSelect = peopleSpinner.getSelectedItem().toString();
                 genderSelect = mfSpinner.getSelectedItem().toString();
 
-                //필수기입항목
-                mustSelect = dateSelect+", "+timeSelect+", "+peopleSelect+", "+genderSelect;
                 title = inputTitle.getText().toString();
                 content = inputContent.getText().toString();
 
@@ -166,7 +187,7 @@ public class boongzzawrite extends AppCompatActivity {
                 String writeTime = dateFormat.format(date);
 
 
-//postModel post = new postModel을 밖에서 하고 닉네임 제외 나머지를 다 밖에서 하면 닉넴 저장이 안됨
+                //postModel post = new postModel을 밖에서 하고 닉네임 제외 나머지를 다 밖에서 하면 닉넴 저장이 안됨
 
                 mDatabaseRef.child("userInfo").child(writerUid).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -177,7 +198,10 @@ public class boongzzawrite extends AppCompatActivity {
 
                         post.setPostTitle(title);
                         post.setPostContent(content);
-                        post.setMustKeep(mustSelect);
+                        post.setDate(dateSelect);
+                        post.setTime(timeSelect);
+                        post.setPeople(peopleSelect);
+                        post.setGender(genderSelect);
                         post.setWriterUid(writerUid);
                         post.setWriteTime(writeTime);
                         post.setBoardName(boardName);
@@ -192,8 +216,11 @@ public class boongzzawrite extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+
                     }
                 });
+
+                Toast.makeText(boongzzawrite.this,"게시글이 등록되었습니다.",Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(boongzzawrite.this, boongzza.class);
                 startActivity(intent);

@@ -4,13 +4,30 @@ package com.example.graduproject;
 
 public class boardList {
 
+    private String whatType;
     private String mustText;
     private String writeTime;
     private String writeTitle;
     private String writeContent;
     private String nickName;
     private int commentCount;
+    private int recruitCheck;
 
+    public String getWhatType() {
+        return whatType;
+    }
+
+    public void setWhatType(String whatType) {
+        this.whatType = whatType;
+    }
+
+    public int getRecruitCheck() {
+        return recruitCheck;
+    }
+
+    public void setRecruitCheck(int recruitCheck) {
+        this.recruitCheck = recruitCheck;
+    }
 
     public String getWriteContent() {
         return writeContent;
@@ -20,11 +37,11 @@ public class boardList {
         this.writeContent = writeContent;
     }
 
-    public Integer getCommentCount() {
+    public int getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(Integer commentCount) {
+    public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
     }
 
