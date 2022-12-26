@@ -6,9 +6,11 @@ import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -45,6 +48,17 @@ public class emptyTime extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
     private FirebaseUser mUser;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode ==KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(emptyTime.this, myChange.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +135,15 @@ public class emptyTime extends AppCompatActivity {
                 selectAmPm.setSelection(0);
                 selectDay.setSelection(0);
 
+            }
+        });
+
+        resultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(emptyTime.this,position,Toast.LENGTH_SHORT).show();
+//                adapter.deleteItem(position);
+//                itemArray.remove(position);
             }
         });
 

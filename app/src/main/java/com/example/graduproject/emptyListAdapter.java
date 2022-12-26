@@ -18,7 +18,6 @@ import java.util.ArrayList;
  public class emptyListAdapter extends BaseAdapter {
 
     private TextView content;
-    private ImageButton closeBtn;
 
     private ArrayList<emptyTimeList> emptyTimeLists = new ArrayList<emptyTimeList>();
     @Override
@@ -38,7 +37,6 @@ import java.util.ArrayList;
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final int pos = position;
         final Context context = viewGroup.getContext();
 
         if(view == null) {
@@ -47,11 +45,11 @@ import java.util.ArrayList;
         }
 
         content = (TextView) view.findViewById(R.id.content);
-        closeBtn = (ImageButton) view.findViewById(R.id.closeBtn);
 
         emptyTimeList emptyTimeList = emptyTimeLists.get(position);
 
         content.setText(emptyTimeList.getText());
+
 
 
         return view;
