@@ -56,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.tab_chat:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, chatFragment).commit();
-                        bottom_menu.setVisibility(View.GONE);
+                        Intent intent2 = new Intent(MainActivity.this, ChatFunction.class);
+                        startActivity(intent2);
+                        finish();
+                       /* getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, chatFragment).commit();
+                        bottom_menu.setVisibility(View.GONE);*/
                         return true;
                     case R.id.tab_mpage:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, mypageFragment).commit();

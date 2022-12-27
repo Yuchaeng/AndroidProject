@@ -102,7 +102,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         holder.goChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCallback.onClick(mDataset.get(position).getNickName().toString());
+                mCallback.onClick(mDataset.get(position).getUid());
 
 
             }
