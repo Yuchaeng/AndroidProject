@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<Chat> mDataset;
     private String myNickName = "";
+    private String urNickName = "";
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvNickName;
@@ -31,16 +32,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         //return super.getItemViewType(position);
         if(mDataset.get(position).nickname.equals(myNickName)){
             return 1;
-        } else {
+        } else{
             return 2;
         }
     }
 
     //adapter 처음 실행
     //recyclerview list에 나타나는 데이터
-    public MyAdapter(ArrayList<Chat> myDataset, String nick) {
+    public MyAdapter(ArrayList<Chat> myDataset, String nick, String nick2) {
         mDataset = myDataset;
         this.myNickName = nick;
+        this.urNickName = nick2;
     }
 
     @NonNull
@@ -60,8 +62,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     //data transfer object
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
-        holder.tvNickName.setText(mDataset.get(position).getNickname());
-        holder.tvChat.setText(mDataset.get(position).getMsg());
+        /*holder.tvNickName.setText(mDataset.get(position).getNickname());
+        holder.tvChat.setText(mDataset.get(position).getMsg());*/
+
+        if (mDataset.get(position).getNickname().equals(urNickName)){
+            holder.tvNickName.setText(mDataset.get(position).getNickname());
+            holder.tvChat.setText(mDataset.get(position).getMsg());
+        } else if (mDataset.get(position).getNickname().equals(myNickName)) {
+            holder.tvNickName.setText(mDataset.get(position).getNickname());
+            holder.tvChat.setText(mDataset.get(position).getMsg());
+        } else {
+            holder.tvNickName.setVisibility(View.GONE);
+            holder.tvNickName.setLayoutParams(new RecyclerView.LayoutParams(0,0));
+            holder.tvChat.setVisibility(View.GONE);
+            holder.tvChat.setLayoutParams(new RecyclerView.LayoutParams(0,0));
+        }
     }
 
     @Override

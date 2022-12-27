@@ -4,11 +4,13 @@ import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -62,6 +64,8 @@ public class login extends AppCompatActivity {
         passEdit = findViewById(R.id.pwEdit);
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
 
         //자동 로그인 - 이미 로그인 되어있으면 바로 홈화면으로
         if(mAuth.getCurrentUser() != null) {
@@ -154,6 +158,12 @@ public class login extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(login.this,"로그인 성공",Toast.LENGTH_LONG).show();
+
+                            SharedPreferences sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("email", user.getEmail());
+                            editor.commit();
+
                             movePage(user);
                         } else {
                             // If sign in fails, display a message to the user.

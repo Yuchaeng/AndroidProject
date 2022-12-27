@@ -1,6 +1,8 @@
 package com.example.graduproject;
 
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,17 +27,20 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
     private ArrayList<userProfile> mDataset;
     String stMyEmail = "";
     private FirebaseStorage storage;
     private StorageReference storageRef;
     FirebaseAuth mAuth;
+    private OnItemClick mCallback;
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvUser;
-        public ImageView ivUser;
+        public CircleImageView ivUser;
         public TextView goChat;
         public MyViewHolder(View v) {
             super(v);
@@ -50,8 +56,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     }
 
-    public UserAdapter(ArrayList<userProfile> myDataset) {
+    public UserAdapter(ArrayList<userProfile> myDataset, OnItemClick listner) {
         mDataset = myDataset;
+        this.mCallback = listner;
     }
 
     @NonNull
@@ -86,11 +93,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             holder.tvUser.setText(mDataset.get(position).getNickName());
             //프로필사진
             if (mDataset.get(position).getProfileImageUrl()!=null){
-                Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(100,100).into(holder.ivUser);
+                Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(80,80).into(holder.ivUser);
             } else {
-                Glide.with(holder.itemView).load(R.drawable.cat_temp).override(100,100).into(holder.ivUser);
+                Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(80,80).into(holder.ivUser);
             }
         }
+
+        holder.goChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onClick(mDataset.get(position).getNickName().toString());
+
+
+            }
+        });
 
 
         //StorageReference pathRef = storageRef.child("userProfile").child(mDataset.get(position).getUid()+"_img");
@@ -111,12 +127,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             });
 
         }*/
-        holder.goChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
 
     }
 

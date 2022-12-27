@@ -1,19 +1,19 @@
 package com.example.graduproject;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,14 +24,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Comment;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
 
-public class ChatFragment extends Fragment {
+public class ChatFunction extends AppCompatActivity {
     //recyclerview
     private RecyclerView recyclerView;
     MyAdapter mAdapter;
@@ -46,44 +44,39 @@ public class ChatFragment extends Fragment {
 
     ArrayList<Chat> chatArrayList;
 
-    private static final String TAG = "ChatFragment";
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_chat, container, false);
+        setContentView(R.layout.activity_chat_function);
 
         //firebase 선언
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        btnSend = v.findViewById(R.id.btnSend);
-        etText = v.findViewById(R.id.etText);
+        btnSend = findViewById(R.id.btnSend);
+        etText = findViewById(R.id.etText);
         chatArrayList = new ArrayList<>();
 
         //recyclerview
-        recyclerView = v.findViewById(R.id.my_recycler_view);
+        recyclerView = findViewById(R.id.my_recycler_view);
         //recyclerview 높이가 가변적이지 않게
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         FirebaseUser mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        Intent intent = getIntent();
+        String nick2 = intent.getStringExtra("nick2");
+
         //finish button 클릭 시 메인으로 돌아감
-        Button btnFinish = v.findViewById(R.id.btnFinish);
+        Button btnFinish = findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(ChatFunction.this, FriendTabActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
 
@@ -117,7 +110,6 @@ public class ChatFragment extends Fragment {
                         //firebase에 데이터 생성
                         myRef.setValue(numbers);
 
-
                     }
 
                     @Override
@@ -135,7 +127,6 @@ public class ChatFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String nick = snapshot.getValue(String.class);
 
-                String nick2 = "dd";
                 //recyclerview adapter
                 mAdapter = new MyAdapter(chatArrayList, nick, nick2);
                 recyclerView.setAdapter(mAdapter);
@@ -164,15 +155,25 @@ public class ChatFragment extends Fragment {
                 Log.d(TAG, "nick"+nick);
                 Log.d(TAG, "msg"+msg);
 
-                //String nick2 = getArguments().getString("nick2");
-                /*if(nick.equals(nick2)) {
+               /*if (chat.getId().equals(nick2)){
                     chatArrayList.add(chat);
-                } else if(id.equals(mUser.getUid())){
+                } else if(chat.getId().equals(mUser.getUid())){
                     chatArrayList.add(chat);
                 }*/
+                //String nick2 = getArguments().getString("nick2");
+                /*if(nick.equals(nick2)) {
+                    if (msg.isEmpty()){
+                        msg = "대화를 시작하세요";
 
+                    }
+                    chatArrayList.add(chat);
+                } else if(id.equals(mUser.getUid())){
+                    if (msg == null) {
+                        msg = "";
+                    }
+                    chatArrayList.add(chat);
+                }*/
                 chatArrayList.add(chat);
-
                 mAdapter.notifyDataSetChanged();
 
 
@@ -213,153 +214,11 @@ public class ChatFragment extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(getActivity(), "Failed to load comments.",
-                        Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getActivity(), "Failed to load comments.",
+                        Toast.LENGTH_SHORT).show();*/
             }
         };
         DatabaseReference databaseReference = database.getReference("message");
         databaseReference.addChildEventListener(childEventListener);
-
-
-        return v;
     }
-
 }
-
-/*
-
-public class ChatFragment extends Fragment {
-    private static final String TAG = "ChatFragment";
-    private FirebaseAuth mAuth;
-    private RecyclerView recyclerView;
-    MyAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    EditText etText;
-    Button btnSend;
-    TextView nickname;
-
-    FirebaseDatabase database;
-    ArrayList<Chat> chatArrayList;
-    private DatabaseReference mDatabaseRef;
-    String nick;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
-
-        View v = inflater.inflate(R.layout.fragment_chat, container, false);
-        database = FirebaseDatabase.getInstance();
-
-        Button btnFinish = v.findViewById(R.id.btnFinish);
-        btnFinish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-
-            }
-        });
-
-        btnSend = v.findViewById(R.id.btnSend);
-        etText = v.findViewById(R.id.etText);
-        nickname = v.findViewById(R.id.friend_name);
-
-
-        //recyclerview 세팅
-        recyclerView = v.findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-
-        String[] myDataset = {"test1", "test2", "test3", "test4"};
-
-        chatArrayList = new ArrayList<>();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        mDatabaseRef.child("userInfo").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userProfile info = snapshot.getValue(userProfile.class);
-                String a = info.getNickName();
-                nick = a;
-                nickname.setText(a);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        mAdapter = new MyAdapter(chatArrayList, nick);
-        recyclerView.setAdapter(mAdapter);
-
-
-
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
-
-                // A new comment has been added, add it to the displayed list
-                Chat chat = dataSnapshot.getValue(Chat.class);
-                String commentKey = dataSnapshot.getKey();
-                String nick = chat.getNickname();
-                String msg = chat.getMsg();
-                Log.d(TAG, "nick: "+nick);
-                Log.d(TAG, "msg: "+msg);
-
-                chatArrayList.add(chat);
-                mAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
-
-                // A comment has changed, use the key to determine if we are displaying this
-                // comment and if so displayed the changed comment.
-
-                // ...
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
-
-                // A comment has changed, use the key to determine if we are displaying this
-                // comment and if so remove it.
-                String commentKey = dataSnapshot.getKey();
-
-                // ...
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(getActivity(), "Failed to load comments.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-
-
-
-        return v;
-    }
-}*/
