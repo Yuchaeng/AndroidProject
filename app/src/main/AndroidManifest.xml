@@ -19,21 +19,7 @@
         android:theme="@style/Theme.GraduProject"
         tools:targetApi="31">
         <activity
-            android:name=".recommendClub"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".clubLoading"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".loadMain"
+            android:name=".ChatFunction"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

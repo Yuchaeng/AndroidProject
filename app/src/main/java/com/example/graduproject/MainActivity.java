@@ -10,6 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         home_cs = findViewById(R.id.home_cs);
 
 
+
+
         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, homeFragment).commit();
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -48,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, homeFragment).commit();
                         return true;
                     case R.id.tab_friend:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, friendFragment).commit();
+                        Intent intent = new Intent(MainActivity.this, FriendTabActivity.class);
+                        startActivity(intent);
+                        finish();
                         return true;
                     case R.id.tab_chat:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, chatFragment).commit();

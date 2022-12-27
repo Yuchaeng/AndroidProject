@@ -4,11 +4,13 @@ package com.example.graduproject;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,8 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FriendFragment extends Fragment {
+public class FriendFragment extends Fragment implements OnItemClick {
     //recyclerview
+    private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.LayoutManager layoutManager2;
     UserAdapter mAdapter;
@@ -57,8 +61,8 @@ public class FriendFragment extends Fragment {
 
         userArrayList = new ArrayList<>();
 
-        RecyclerView recyclerView = v.findViewById(R.id.my_recycler_view); //추천친구
-        RecyclerView recyclerView2 = v.findViewById(R.id.my_recycler_view2); //친구목록
+        RecyclerView recyclerView = v.findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView2 = v.findViewById(R.id.my_recycler_view2);
         recyclerView.setHasFixedSize(true);
         recyclerView2.setHasFixedSize(true);
 
@@ -75,7 +79,15 @@ public class FriendFragment extends Fragment {
 
                 // A new comment has been added, add it to the displayed list
                 userProfile user = dataSnapshot.getValue(userProfile.class);
-                userArrayList.add(user);
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser muser = mAuth.getCurrentUser();
+                //내 자신은 제외하기 위하여
+                if (user.getUid().equals(muser.getUid())){
+
+                } else {
+                    userArrayList.add(user);
+                }
+
                 mAdapter.notifyDataSetChanged();
                 mAdapter2.notifyDataSetChanged();
 
@@ -123,10 +135,12 @@ public class FriendFragment extends Fragment {
         databaseReference.addChildEventListener(childEventListener);
 
         //recyclerview adapter
-        mAdapter = new UserAdapter(userArrayList); //추천친구 어댑터
-        mAdapter2 = new UserProfileListAdapter(userArrayList); //친구목록 어댑터
+        mAdapter = new UserAdapter(userArrayList, this);
+        mAdapter2 = new UserProfileListAdapter(userArrayList);
         recyclerView.setAdapter(mAdapter);
         recyclerView2.setAdapter(mAdapter2);
+
+
 
 
 
@@ -143,6 +157,19 @@ public class FriendFragment extends Fragment {
         ts2.setIndicator("친구 목록");
         tabHost1.addTab(ts2);
         return v;
+    }
+
+    @Override
+    public void onClick(String value) {
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("nick2", value);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        ChatFragment fragment = new ChatFragment();
+        fragment.setArguments(bundle);
+        transaction.replace(R.id.home_cs, fragment);
+        transaction.commit();
     }
 }
 

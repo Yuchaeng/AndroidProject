@@ -58,7 +58,7 @@ import java.util.Map;
 public class myChange extends AppCompatActivity {
 
     TextView picChange, whatName, whatBirth, whatGender, deptId, nickName, whenEmpty,
-    whatInterest, writeIntroduce, nickNameChage, introduceChange, emptyTimeChange, interstChange, signoutUser, deleteUser;
+            whatInterest, writeIntroduce, nickNameChage, introduceChange, emptyTimeChange, interstChange, signoutUser, deleteUser;
     ImageView profileImg;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
@@ -244,12 +244,12 @@ public class myChange extends AppCompatActivity {
                         imageUri = intent.getData();
                         pathUri = getPath(intent.getData());
                         Log.e(TAG, "uri : " + imageUri);
-                       //imageview.setImageURI(imageUri); -> glide 안쓰면 얘 쓰기
+                        //imageview.setImageURI(imageUri); -> glide 안쓰면 얘 쓰기
                         Glide.with(myChange.this)
                                 .load(imageUri)
                                 .into(profileImg);
 
-                       uploadToFirebase(imageUri);
+                        uploadToFirebase(imageUri);
                     }
 
                 }

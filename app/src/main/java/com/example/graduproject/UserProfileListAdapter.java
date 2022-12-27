@@ -17,6 +17,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileListAdapter.MyViewHolder> {
     private ArrayList<userProfile> mDataset;
     String stMyEmail = "";
@@ -27,7 +29,7 @@ public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileList
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvUser;
-        public ImageView ivUser;
+        public CircleImageView ivUser;
         public TextView tvInterest;
         public TextView tvIntroduce;
         public MyViewHolder(View v) {
@@ -64,20 +66,39 @@ public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileList
     public void onBindViewHolder(@NonNull UserProfileListAdapter.MyViewHolder holder, int position) {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+        if (user.getUid().equals(mDataset.get(position).getUid())){
 
-
-        holder.tvUser.setText(mDataset.get(position).getNickName());
-        holder.tvInterest.setText((mDataset.get(position).getInterest()));
-        holder.tvIntroduce.setText(mDataset.get(position).getIntroduce());
-        if (mDataset.get(position).getProfileImageUrl()!=null){
-            Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(100,100).into(holder.ivUser);
-        } else {
-            Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(100,100).into(holder.ivUser);
+        } else{
+            holder.tvUser.setText(mDataset.get(position).getNickName());
+            holder.tvInterest.setText((mDataset.get(position).getInterest()));
+            holder.tvIntroduce.setText(mDataset.get(position).getIntroduce());
+            if (mDataset.get(position).getProfileImageUrl()!=null){
+                Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(80,80).into(holder.ivUser);
+            } else {
+                Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(80,80).into(holder.ivUser);
+            }
         }
         
 
 
+        //StorageReference pathRef = storageRef.child("userProfile").child(mDataset.get(position).getUid()+"_img");
+        /*if(pathRef!=null) { //profile.getProfileImageUrl() != null
 
+            pathRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(holder.itemView.getContext())
+                            .load(uri)
+                            .into(holder.ivUser);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Glide.with(holder.itemView.getContext()).load(R.drawable.cat_temp).into(holder.ivUser);
+                }
+            });
+
+        }*/
     }
 
     @Override
