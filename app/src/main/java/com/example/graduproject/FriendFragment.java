@@ -31,7 +31,6 @@ import java.util.ArrayList;
 
 public class FriendFragment extends Fragment {
     //recyclerview
-    private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.LayoutManager layoutManager2;
     UserAdapter mAdapter;
@@ -58,8 +57,8 @@ public class FriendFragment extends Fragment {
 
         userArrayList = new ArrayList<>();
 
-        RecyclerView recyclerView = v.findViewById(R.id.my_recycler_view);
-        RecyclerView recyclerView2 = v.findViewById(R.id.my_recycler_view2);
+        RecyclerView recyclerView = v.findViewById(R.id.my_recycler_view); //추천친구
+        RecyclerView recyclerView2 = v.findViewById(R.id.my_recycler_view2); //친구목록
         recyclerView.setHasFixedSize(true);
         recyclerView2.setHasFixedSize(true);
 
@@ -124,8 +123,8 @@ public class FriendFragment extends Fragment {
         databaseReference.addChildEventListener(childEventListener);
 
         //recyclerview adapter
-        mAdapter = new UserAdapter(userArrayList);
-        mAdapter2 = new UserProfileListAdapter(userArrayList);
+        mAdapter = new UserAdapter(userArrayList); //추천친구 어댑터
+        mAdapter2 = new UserProfileListAdapter(userArrayList); //친구목록 어댑터
         recyclerView.setAdapter(mAdapter);
         recyclerView2.setAdapter(mAdapter2);
 
