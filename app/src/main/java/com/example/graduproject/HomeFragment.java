@@ -10,14 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 
 public class HomeFragment extends Fragment {
 
-    Button boongzzaBtn, mealBtn, exerciseBtn, studyBtn, freeBtn;
+    Button boongzzaBtn, mealBtn, exerciseBtn, studyBtn, freeBtn, recommentClub;
     ViewFlipper v_fllipper;
-
+    TextView noThunder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class HomeFragment extends Fragment {
         exerciseBtn = (Button)view.findViewById(R.id.exerciseBtn);
         studyBtn = (Button) view.findViewById(R.id.studyBtn);
         freeBtn = (Button) view.findViewById(R.id.freeBtn);
+        noThunder = (TextView) view.findViewById(R.id.noThunder);
+        recommentClub = (Button) view.findViewById(R.id.recommendClub);
+
 
         boongzzaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +93,27 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        noThunder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), free.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
+        recommentClub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), clubLoading.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 
         return view;

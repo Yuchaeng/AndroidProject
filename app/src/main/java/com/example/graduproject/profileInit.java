@@ -127,7 +127,7 @@ public class profileInit extends AppCompatActivity {
     private void gotoMain(FirebaseUser user) {
         if(user != null) {
             Toast.makeText(profileInit.this,"환영합니다 "+nameText.getText().toString()+"님",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(profileInit.this,MainActivity.class));
+            startActivity(new Intent(profileInit.this,loadMain.class));
             finish();
         }
     }

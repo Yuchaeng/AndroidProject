@@ -70,7 +70,7 @@ public class login extends AppCompatActivity {
         //자동 로그인 - 이미 로그인 되어있으면 바로 홈화면으로
         if(mAuth.getCurrentUser() != null) {
             Toast.makeText(login.this,"자동로그인 되었습니다.",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this,loadMain.class));
             finish();
 
         }
@@ -177,7 +177,7 @@ public class login extends AppCompatActivity {
 
     private void movePage(FirebaseUser user) {
         if(user != null) {
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,loadMain.class);
             startActivity(intent);
             finish();
         }
