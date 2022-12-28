@@ -3,8 +3,8 @@ package com.example.graduproject;
 import android.net.Uri;
 
 public class commentList {
-    private Uri imageUri;
-    private String commentWriter, commentContent, commentTime;
+
+    private String imageUri, commentWriter, commentContent, commentTime;
     private Integer check;
 
     public Integer getCheck() {
@@ -15,11 +15,11 @@ public class commentList {
         this.check = check;
     }
 
-    public Uri getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
-    public void setImageUri(Uri imageUri) {
+    public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 

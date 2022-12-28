@@ -179,4 +179,3 @@ public class FriendTabActivity extends FragmentActivity implements OnItemClick {
     }
 }
 
-

@@ -267,7 +267,7 @@ public class mealPostDetail extends AppCompatActivity {
                                 if(pm.getWriterUid().equals(commentModel.getCommentUid())) {
                                     check=0;
                                 }
-                                ca.addItem(String.valueOf(uri),commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
+                                ca.addItem(uri,commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
                                 ca.notifyDataSetChanged();
                                 mDatabaseRef.child("allPosts").child("meal").child(key).child("comment").push().setValue(commentModel);
                                 mDatabaseRef.child("allPosts").child("meal").child(key).child("commentCount").setValue(ca.getCount());

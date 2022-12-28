@@ -53,8 +53,8 @@ public class study extends AppCompatActivity {
         studyList.setAdapter(pa);
         getPost();
 
-        // ************************이미지 바꾸기******************
-        studyImage.setBackgroundResource(R.drawable.meal_image);
+
+        studyImage.setBackgroundResource(R.drawable.study_image);
         studyImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

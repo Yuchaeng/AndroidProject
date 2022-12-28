@@ -51,7 +51,13 @@ public class commentAdapter extends BaseAdapter {
 
         commentList commentList = comments.get(position);
 
-        Glide.with(view).load(commentList.getImageUri()).into(commentImage);
+        if(commentList.getImageUri()==null) {
+            Glide.with(view).load(R.drawable.no_profile_image).into(commentImage);
+        }
+        else{
+            Glide.with(view).load(Uri.parse(commentList.getImageUri())).into(commentImage);
+        }
+
         commentWriter.setText(commentList.getCommentWriter());
         commentContent.setText(commentList.getCommentContent());
         commentTime.setText(commentList.getCommentTime());
@@ -65,7 +71,7 @@ public class commentAdapter extends BaseAdapter {
     public void addItem(String imageUri, String commentWriter, String commentContent, String commentTime,int check) {
         commentList item = new commentList();
 
-        item.setImageUri(Uri.parse(imageUri));
+        item.setImageUri(imageUri);
         item.setCommentWriter(commentWriter);
         item.setCommentContent(commentContent);
         item.setCommentTime(commentTime);

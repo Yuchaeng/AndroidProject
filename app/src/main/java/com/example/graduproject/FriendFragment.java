@@ -3,12 +3,8 @@ package com.example.graduproject;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,7 +24,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -166,10 +161,9 @@ public class FriendFragment extends Fragment implements OnItemClick {
         Bundle bundle = new Bundle();
         bundle.putString("nick2", value);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        ChatFragment fragment = new ChatFragment();
+        TipFragment fragment = new TipFragment();
         fragment.setArguments(bundle);
         transaction.replace(R.id.home_cs, fragment);
         transaction.commit();
     }
 }
-

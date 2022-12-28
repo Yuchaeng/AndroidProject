@@ -28,8 +28,7 @@ public class exerciseNotice extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_notice);
 
         exerNotice = findViewById(R.id.exerNotice);
-        //***************이미지 바꾸기*********************
-        exerNotice.setBackgroundResource(R.drawable.boongzza_notice);
+        exerNotice.setBackgroundResource(R.drawable.exer_notice);
 
     }
 }

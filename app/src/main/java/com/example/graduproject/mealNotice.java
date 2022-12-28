@@ -28,8 +28,7 @@ public class mealNotice extends AppCompatActivity {
         setContentView(R.layout.activity_meal_notice);
 
         mealNotice = findViewById(R.id.mealNotice);
-        //***************이미지 바꾸기*********************
-        mealNotice.setBackgroundResource(R.drawable.boongzza_notice);
+        mealNotice.setBackgroundResource(R.drawable.meal_notice);
 
 
     }
