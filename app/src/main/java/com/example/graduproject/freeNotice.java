@@ -25,8 +25,7 @@ public class freeNotice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_notice);
 
-        //*************이미지 바꾸기 ************
         freeNotice = findViewById(R.id.freeNotice);
-        freeNotice.setBackgroundResource(R.drawable.boongzza_notice);
+        freeNotice.setBackgroundResource(R.drawable.free_notice);
     }
 }

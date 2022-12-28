@@ -42,18 +42,17 @@ public class recommendClub extends AppCompatActivity {
         clubInterest = findViewById(R.id.clubInterest);
         clubName1 = findViewById(R.id.clubName);
 
-        //유저의 관심사 가져와서 화면에 표시
-        //관심사 비슷한 종류끼리 묶어서 얘네가 몇 개나 있는지 계산
-        //계산해서 제일 값이 높은 거에 해당하는 동아리 출력?
 
         mDatabaseRef.child("userInfo").child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+
                 userProfile userProfile = snapshot.getValue(com.example.graduproject.userProfile.class);
-                if(userProfile.getInterest() != null) {
+                if(!userProfile.getInterest().equals("") && !userProfile.getInterest().equals("관심사 및 특징을 설정해주세요.")) {
                     String interest;
-                    String[] clubs = new String[10];
+                    ArrayList<String> clubs = new ArrayList<>();
+
 
                     interest = userProfile.getInterest();
                     clubInterest.setText(interest);
@@ -62,24 +61,72 @@ public class recommendClub extends AppCompatActivity {
 
                     int check=0;
 
-                    if(obj.contains("여행")) {
-                        clubs[0] = "유스호스텔\n여행하는 중앙연합동아리";
-                        check++;
+                    if(obj.contains("여행")||obj.contains("친구사귀기")||obj.contains("연애")||obj.contains("술")) {
+                        clubs.add("유스호스텔\n여행하는 중앙연합동아리");
                     }
-                    if(obj.contains("야구")) {
-                        clubs[1] = "히어로즈\n야구 중앙동아리";
-                        check++;
+                    if(obj.contains("야구")||obj.contains("운동")) {
+                        clubs.add("히어로즈\n야구 중앙동아리");
                     }
-                    Random rand = new Random();
+                    if(obj.contains("축구")||obj.contains("운동")) {
+                        clubs.add("FC seoultech,FC CTRL\n축구 중앙동아리");
+                        clubs.add("FC CTRL\n축구 중앙동아리");
+                    }
+                    if(obj.contains("농구")||obj.contains("운동")) {
+                        clubs.add("스파바\n농구 중앙동아리");
+                    }
+                    if(obj.contains("노래")) {
+                        clubs.add("소리사랑\n보컬 중앙동아리");
+                        clubs.add("통일아침\n밴드 중앙동아리");
+                        clubs.add("그레이무드\n밴드 중앙동아리");
+                        clubs.add("세마치\n밴드 중앙동아리");
+                    }
+                    if(obj.contains("춤")) {
+                        clubs.add("열혈무군\n스트릿댄스 중앙동아리");
+                        clubs.add("아이엠\n스트릿댄스 중앙동아리");
+                    }
+                    if(obj.contains("보드")) {
+                        clubs.add("타보타\n보드 중앙동아리");
+                    }
+                    if(obj.contains("어학")) {
+                        clubs.add("일본어 회화 동아리\n중앙동아리");
+                    }
+                    if(obj.contains("악기연주")) {
+                        clubs.add("통일아침\n밴드 중앙동아리");
+                        clubs.add("그레이무드\n밴드 중앙동아리");
+                        clubs.add("세마치\n밴드 중앙동아리");
+                        clubs.add("SNUTO\n오케스트라 중앙동아리");
+                    }
+                    if(obj.contains("배드민턴")) {
+                        clubs.add("STAB\n배드민턴 중앙동아리");
+                    }
+                    if(obj.contains("볼링")||obj.contains("운동")) {
+                        clubs.add("KOBO\n볼링 중앙동아리");
+                    }
+                    if(obj.contains("어학")) {
+                        clubs.add("ECC\n영어 중앙동아리");
+                    }
+                    if(obj.contains("그림그리기")) {
+                        clubs.add("그림랑\n그림 중앙동아리");
+                    }
+                    if(obj.contains("운동")) {
+                        clubs.add("라이더스\n자전거 중앙동아리");
+                    }
 
-                    clubName1.setText(clubs[rand.nextInt(check)]);
 
+                    if(clubs.size()==0) {
+                        clubName1.setText("추천 동아리를\n찾지못했어요..");
+                    }
+                    else{
+                        Random rand = new Random();
+                        int ranNum = rand.nextInt(clubs.size());
+                        clubName1.setText(clubs.get(ranNum));
+                    }
 
                 }
                 else{
-                    clubInterest.setText("관심사를 설정해주세요.");
+                    clubInterest.setText("관심사가 없어요!");
+                    clubName1.setText("관심사를 설정해주세요.");
                 }
-
 
 
             }

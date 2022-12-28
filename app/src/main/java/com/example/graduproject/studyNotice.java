@@ -27,8 +27,7 @@ public class studyNotice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_notice);
 
-        //*************이미지 바꾸기 ************
         studyNotice = findViewById(R.id.studyNotice);
-        studyNotice.setBackgroundResource(R.drawable.boongzza_notice);
+        studyNotice.setBackgroundResource(R.drawable.study_notice);
     }
 }

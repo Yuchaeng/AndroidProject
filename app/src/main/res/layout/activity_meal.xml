@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:text="아직 게시글이 없어요."
             android:textSize="20sp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
 
         <ListView
             android:layout_marginTop="5dp"

@@ -46,6 +46,12 @@
                 android:text="수업"
                 android:textSize="15sp"/>
             <RadioButton
+                android:id="@+id/thunder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="번개"
+                android:textSize="15sp"/>
+            <RadioButton
                 android:id="@+id/etc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

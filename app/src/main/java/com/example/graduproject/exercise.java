@@ -53,8 +53,8 @@ public class exercise extends AppCompatActivity {
         exerList.setAdapter(pa);
         getPost();
 
-        // ************************이미지 바꾸기******************
-        exerImage.setBackgroundResource(R.drawable.meal_image);
+
+        exerImage.setBackgroundResource(R.drawable.exer_image);
         exerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

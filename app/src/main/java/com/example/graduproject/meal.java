@@ -54,7 +54,6 @@ public class meal extends AppCompatActivity {
         mealList.setAdapter(mealPa);
         getMealPost();
 
-        // ************************이미지 바꾸기******************
         mealImage.setBackgroundResource(R.drawable.meal_image);
         mealImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,28 +103,32 @@ public class meal extends AppCompatActivity {
 
                 mealKey.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if(dataSnapshot != null) {
+                    if(dataSnapshot == null) {
+                        noPost.setVisibility(View.VISIBLE);
+                    }
+                    else{
                         noPost.setVisibility(View.GONE);
+                        String data = dataSnapshot.getKey();
+                        mealKey.add(0,data);
+
+                        int check = 0;
+                        postModel mypostModel = dataSnapshot.getValue(postModel.class);
+
+                        if(!mypostModel.isRecruit()) {
+                            check=1;
+                        }
+
+                        //필수기입항목
+                        String type = mypostModel.getType();
+                        String mustData = mypostModel.getDate()+", "+mypostModel.getTime()+", "+mypostModel.getPeople()+", "+mypostModel.getGender();
+                        mealPa.addItem(mypostModel.getPostTitle(), mypostModel.getPostContent(),
+                                mustData, mypostModel.getWriterName(),mypostModel.getWriteTime(), mypostModel.getCommentCount(),check, type);
+
+
                     }
-                    String data = dataSnapshot.getKey();
-                    mealKey.add(0,data);
-
-                    int check = 0;
-                    postModel mypostModel = dataSnapshot.getValue(postModel.class);
-
-                    if(!mypostModel.isRecruit()) {
-                        check=1;
-                    }
-
-                    //필수기입항목
-                    String type = mypostModel.getType();
-                    String mustData = mypostModel.getDate()+", "+mypostModel.getTime()+", "+mypostModel.getPeople()+", "+mypostModel.getGender();
-                    mealPa.addItem(mypostModel.getPostTitle(), mypostModel.getPostContent(),
-                            mustData, mypostModel.getWriterName(),mypostModel.getWriteTime(), mypostModel.getCommentCount(),check, type);
-
-
+                    mealPa.notifyDataSetChanged();
                 }
-                mealPa.notifyDataSetChanged();
+
 
             }
 

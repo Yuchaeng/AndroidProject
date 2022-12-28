@@ -3,13 +3,7 @@ package com.example.graduproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,13 +11,12 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
     ConstraintLayout home_cs;
     HomeFragment homeFragment;
     FriendFragment friendFragment;
-    ChatFragment chatFragment;
+    TipFragment tipFragment;
     MypageFragment mypageFragment;
 
 
@@ -34,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         homeFragment = new HomeFragment();
         friendFragment = new FriendFragment();
-        chatFragment = new ChatFragment();
+        tipFragment = new TipFragment();
         mypageFragment = new MypageFragment();
         home_cs = findViewById(R.id.home_cs);
 
@@ -56,11 +49,8 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.tab_chat:
-                        Intent intent2 = new Intent(MainActivity.this, ChatFunction.class);
-                        startActivity(intent2);
-                        finish();
-                       /* getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, chatFragment).commit();
-                        bottom_menu.setVisibility(View.GONE);*/
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, tipFragment).commit();
+                        bottom_menu.setVisibility(View.GONE);
                         return true;
                     case R.id.tab_mpage:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, mypageFragment).commit();

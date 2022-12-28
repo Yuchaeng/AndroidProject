@@ -47,6 +47,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".clubLoading"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".recommendClub"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".free"
             android:exported="false">
             <meta-data
@@ -233,6 +247,13 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+        <activity
+            android:name=".loadMain"
+            android:exported="false">
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
         </activity>
         <activity
             android:name=".FriendTabActivity"

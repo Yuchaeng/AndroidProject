@@ -157,6 +157,7 @@ public class freePostDetail extends AppCompatActivity {
                             if(postModel.getWriterUid().equals(commentModel.getCommentUid())) {
                                 check=0;
                             }
+
                             ca.addItem(commentModel.getImageUri(),commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
                             ca.notifyDataSetChanged();
 
@@ -245,7 +246,8 @@ public class freePostDetail extends AppCompatActivity {
                                 if(pm.getWriterUid().equals(commentModel.getCommentUid())) {
                                     check=0;
                                 }
-                                ca.addItem(String.valueOf(uri),commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
+
+                                ca.addItem(uri,commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
                                 ca.notifyDataSetChanged();
                                 mDatabaseRef.child("allPosts").child("free").child(key).child("comment").push().setValue(commentModel);
                                 mDatabaseRef.child("allPosts").child("free").child(key).child("commentCount").setValue(ca.getCount());

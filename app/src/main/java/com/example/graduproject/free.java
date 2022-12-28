@@ -53,8 +53,8 @@ public class free extends AppCompatActivity {
         freeList.setAdapter(pa);
         getPost();
 
-        // ************************이미지 바꾸기******************
-        freeImage.setBackgroundResource(R.drawable.meal_image);
+
+        freeImage.setBackgroundResource(R.drawable.free_image);
         freeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,26 +96,31 @@ public class free extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 freeKey.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if(dataSnapshot != null) {
+                    if(dataSnapshot == null) {
+                        noPost.setVisibility(View.VISIBLE);
+                    }
+                    else{
                         noPost.setVisibility(View.GONE);
+                        String data = dataSnapshot.getKey();
+                        freeKey.add(0,data);
+
+                        int check = 0;
+                        postModel mypostModel = dataSnapshot.getValue(postModel.class);
+
+                        if(!mypostModel.isRecruit()) {
+                            check=1;
+                        }
+
+                        //필수기입항목
+                        String type = mypostModel.getType();
+                        pa.addItem(mypostModel.getPostTitle(), mypostModel.getPostContent(),
+                                null, mypostModel.getWriterName(),mypostModel.getWriteTime(), mypostModel.getCommentCount(),check, type);
+
                     }
-                    String data = dataSnapshot.getKey();
-                    freeKey.add(0,data);
+                    pa.notifyDataSetChanged();
 
-                    int check = 0;
-                    postModel mypostModel = dataSnapshot.getValue(postModel.class);
-
-                    if(!mypostModel.isRecruit()) {
-                        check=1;
                     }
 
-                    //필수기입항목
-                    String type = mypostModel.getType();
-                    pa.addItem(mypostModel.getPostTitle(), mypostModel.getPostContent(),
-                            null, mypostModel.getWriterName(),mypostModel.getWriteTime(), mypostModel.getCommentCount(),check, type);
-
-                }
-                pa.notifyDataSetChanged();
 
             }
             @Override
