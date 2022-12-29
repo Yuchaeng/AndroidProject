@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -172,6 +174,9 @@ public class exercisePostDetail extends AppCompatActivity {
                             if(postModel.getWriterUid().equals(commentModel.getCommentUid())) {
                                 check=0;
                             }
+                            else{
+                                check=1;
+                            }
                             ca.addItem(commentModel.getImageUri(),commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
 
                             ca.notifyDataSetChanged();
@@ -261,6 +266,9 @@ public class exercisePostDetail extends AppCompatActivity {
                                 if(pm.getWriterUid().equals(commentModel.getCommentUid())) {
                                     check=0;
                                 }
+                                else{
+                                    check=1;
+                                }
                                 ca.addItem(uri,commentModel.getCommentName(),commentModel.getCommentContent(),commentModel.getCommentTime(),check);
                                 ca.notifyDataSetChanged();
                                 mDatabaseRef.child("allPosts").child("exercise").child(key).child("comment").push().setValue(commentModel);
@@ -289,6 +297,111 @@ public class exercisePostDetail extends AppCompatActivity {
                 });
 
 
+            }
+        });
+
+        commentLists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mDatabaseRef.child("allPosts").child("exercise").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        postModel postModel = snapshot.getValue(com.example.graduproject.postModel.class);
+                        if(!postModel.getWriterUid().equals(mUser.getUid()) && postModel.isRecruit()) { //모집중인 글이면서 내가 글 작성자가 아님
+                            AlertDialog.Builder builder = new AlertDialog.Builder(exercisePostDetail.this);
+                            builder.setTitle("알림").setMessage("글쓴이만 댓쓴이에게 채팅을 보낼 수 있어요.").setCancelable(true);
+                            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+
+                        }
+                        else if(!postModel.isRecruit()) {  //모집완료된 글은 클릭이벤트 없음
+
+                        }
+                        else{ //글 작성자면서 모집중
+                            ArrayList<String> commentKey = new ArrayList<>();
+
+                            mDatabaseRef.child("allPosts").child("exercise").child(key).child("comment").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    commentKey.clear();
+                                    for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                        commentModel commentModel = dataSnapshot.getValue(com.example.graduproject.commentModel.class);
+                                        commentKey.add(commentModel.getCommentUid());
+                                    }
+                                    String destUid = commentKey.get(i);  //리스트 클릭된 곳과 같은 인덱스에서 uid값 가져옴
+
+                                    if(destUid.equals(postModel.getWriterUid())) { //댓쓴이=글쓴이라면
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(exercisePostDetail.this);
+                                        builder.setTitle("알림").setMessage("나에게는 채팅을 보낼 수 없어요.").setCancelable(true);
+                                        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                            }
+                                        });
+                                        AlertDialog alertDialog = builder.create();
+                                        alertDialog.show();
+                                    }
+                                    else { //글 작성자이고 모집중이고 댓쓴이가 글 작성자가 아닐 때
+                                        mDatabaseRef.child("userInfo").child(destUid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                                userProfile userProfile = snapshot.getValue(com.example.graduproject.userProfile.class);
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(exercisePostDetail.this);
+                                                builder.setTitle("채팅보내기").setMessage(userProfile.getNickName()+"님에게 채팅을 보내시겠어요?").setCancelable(true);
+                                                builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        Intent intent = new Intent(exercisePostDetail.this, ChatFunction.class);
+                                                        intent.putExtra("destUid",destUid);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                });
+
+                                                builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                    }
+                                                });
+
+                                                AlertDialog alertDialog = builder.create();
+                                                alertDialog.show();
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                    }
+
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 

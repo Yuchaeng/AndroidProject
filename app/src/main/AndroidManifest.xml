@@ -19,6 +19,13 @@
         android:theme="@style/Theme.GraduProject"
         tools:targetApi="31">
         <activity
+            android:name=".clubInformation"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ChatFunction"
             android:exported="false">
             <meta-data
@@ -118,13 +125,6 @@
         </activity>
         <activity
             android:name=".exercise"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -251,9 +251,9 @@
         <activity
             android:name=".loadMain"
             android:exported="false">
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
             android:name=".FriendTabActivity"

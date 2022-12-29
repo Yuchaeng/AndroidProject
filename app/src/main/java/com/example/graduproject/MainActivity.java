@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         home_cs = findViewById(R.id.home_cs);
 
 
-
-
         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, homeFragment).commit();
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -48,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         return true;
-                    case R.id.tab_chat:
+                    case R.id.tab_tip:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, tipFragment).commit();
-                        bottom_menu.setVisibility(View.GONE);
                         return true;
                     case R.id.tab_mpage:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_cs, mypageFragment).commit();

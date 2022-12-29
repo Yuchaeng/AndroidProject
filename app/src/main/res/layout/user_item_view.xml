@@ -10,14 +10,11 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivUser"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_marginLeft="3dp"
         app:civ_border_width="0dp" />
-    <!--<ImageView
-        android:id="@+id/ivUser"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>-->
+
     <TextView
         android:id="@+id/tvUser"
         android:layout_width="wrap_content"
@@ -25,17 +22,16 @@
         android:padding="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
         android:layout_weight="3"
         android:textStyle="bold"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="채팅하기"
         android:textAlignment="center"
         android:background="@drawable/chat_bubble"
         android:padding="10dp"
-        android:id="@+id/goChat"/>
+        android:id="@+id/goChat"
+        android:layout_marginEnd="5dp"/>
 </LinearLayout>

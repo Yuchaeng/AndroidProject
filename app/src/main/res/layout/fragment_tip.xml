@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity"
+    tools:context=".TipFragment"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -26,39 +26,44 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="대학생활 정보와 팁 모음입니다. 꾸준히 업데이트됩니다."
-                android:textSize="15sp"
+                android:text="대학생활 정보와 팁 모음입니다.\n꾸준히 업데이트됩니다."
+                android:textSize="17sp"
                 android:layout_marginStart="10dp"/>
 
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/about_club"/>
 
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/want_class"/>
 
             <ImageView
                 android:id="@+id/image3"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/word"/>
 
             <ImageView
                 android:id="@+id/image4"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/school"/>
 
             <ImageView
                 android:id="@+id/image5"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_margin="10dp"/>
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/payco"/>
 
         </LinearLayout>
     </ScrollView>

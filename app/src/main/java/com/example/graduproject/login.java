@@ -156,7 +156,6 @@ public class login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(login.this,"로그인 성공",Toast.LENGTH_LONG).show();
 
                             SharedPreferences sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();
@@ -167,7 +166,7 @@ public class login extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(login.this, "로그인 실패",
+                            Toast.makeText(login.this, "로그인에 실패했어요.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -170,6 +170,7 @@ public class MypageFragment extends Fragment {
             imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
+                    if(getActivity()==null) return;
                     Glide.with(getActivity())
                             .load(uri)
                             .into(myImage);
@@ -179,6 +180,7 @@ public class MypageFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    if(getActivity()==null) return;
                     Glide.with(getActivity()).load(R.drawable.no_profile_image).into(myImage);
                 }
             });

@@ -78,7 +78,7 @@ public class UserProfileListAdapter extends RecyclerView.Adapter<UserProfileList
                 Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(80,80).into(holder.ivUser);
             }
         }
-        
+
 
 
         //StorageReference pathRef = storageRef.child("userProfile").child(mDataset.get(position).getUid()+"_img");

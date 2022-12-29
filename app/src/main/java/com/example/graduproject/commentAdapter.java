@@ -3,12 +3,17 @@ package com.example.graduproject;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -19,6 +24,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class commentAdapter extends BaseAdapter {
     ArrayList<commentList> comments = new ArrayList<commentList>();
     TextView commentMe;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseRef;
+    private FirebaseUser mUser;
 
     @Override
     public int getCount() {
@@ -65,6 +73,10 @@ public class commentAdapter extends BaseAdapter {
         if(commentList.getCheck()==0) {
             commentMe.setVisibility(View.VISIBLE);
         }
+        else{
+            commentMe.setVisibility(View.INVISIBLE);
+        }
+
 
         return view;
     }
@@ -81,6 +93,5 @@ public class commentAdapter extends BaseAdapter {
         comments.add(item);
 
     }
-
 
 }

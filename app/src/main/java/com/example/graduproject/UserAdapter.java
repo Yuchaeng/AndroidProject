@@ -82,27 +82,27 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             if (mDataset.get(position).getProfileImageUrl()!=null){
                 Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(100,100).into(holder.ivUser);
             } else {
-                Glide.with(holder.itemView).load(R.drawable.cat_temp).override(100,100).into(holder.ivUser);
+                Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(100,100).into(holder.ivUser);
             }
             holder.goChat.setText("나에게");
 
-            
+
 
 
         } else{
             holder.tvUser.setText(mDataset.get(position).getNickName());
             //프로필사진
             if (mDataset.get(position).getProfileImageUrl()!=null){
-                Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).override(80,80).into(holder.ivUser);
+                Glide.with(holder.itemView).load(mDataset.get(position).getProfileImageUrl()).into(holder.ivUser);
             } else {
-                Glide.with(holder.itemView).load(R.drawable.no_profile_image).override(80,80).into(holder.ivUser);
+                Glide.with(holder.itemView).load(R.drawable.no_profile_image).into(holder.ivUser);
             }
         }
 
         holder.goChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCallback.onClick(mDataset.get(position).getNickName().toString());
+                mCallback.onClick(mDataset.get(position).getUid());
 
 
             }

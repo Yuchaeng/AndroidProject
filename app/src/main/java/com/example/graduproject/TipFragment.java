@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 
 public class TipFragment extends Fragment {
-    ImageView [] images = new ImageView[5];
-    int getId;
+    ImageView image1, image2, image3, image4, image5;
+
 
 
     @Override
@@ -24,10 +24,10 @@ public class TipFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tip, container, false);
 
-        for(int i=0;i<images.length;i++) {
-            getId = getResources().getIdentifier("image"+i,"id","com.example.graduproject");
-            images[i]= (ImageView) v.findViewById(getId);
-        }
+
+
+
+
 
 
 

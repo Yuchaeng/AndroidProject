@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,19 +53,29 @@ public class ChatFunction extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button button;
     private EditText editText;
+    private TextView friendName;
 
     private FirebaseDatabase firebaseDatabase;
 
     private userProfile destUser;
 
-    private  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyy.MM.dd HH:mm");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyy.MM.dd HH:mm");
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if (keycode == android.view.KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(ChatFunction.this, FriendTabActivity.class));
+            finish();
+            return true;
+        }
+        return false;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_function);
-
 
 
         //finish button 클릭 시 메인으로 돌아감
@@ -75,7 +86,7 @@ public class ChatFunction extends AppCompatActivity {
                 Intent intent = new Intent(ChatFunction.this, FriendTabActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -85,18 +96,21 @@ public class ChatFunction extends AppCompatActivity {
 
     }
 
-    private void init()
-    {
+    private void init() {
         myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent intent = getIntent();
         destUid = intent.getStringExtra("destUid");
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        friendName = findViewById(R.id.friend_name);
+        settingName(destUid);
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         button = (Button) findViewById(R.id.btnSend);
         editText = (EditText) findViewById(R.id.etText);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
 
         if (editText.getText().toString() == null) button.setEnabled(false);
         else button.setEnabled(true);
@@ -104,8 +118,7 @@ public class ChatFunction extends AppCompatActivity {
         checkChatRoom();
     }
 
-    private void sendMsg()
-    {
+    private void sendMsg() {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,10 +142,8 @@ public class ChatFunction extends AppCompatActivity {
         });
     }
 
-    private void sendMsgToDataBase()
-    {
-        if (!editText.getText().toString().equals(""))
-        {
+    private void sendMsgToDataBase() {
+        if (!editText.getText().toString().equals("")) {
             ChatModel.Comment comment = new ChatModel.Comment();
             comment.uid = myUid;
             comment.message = editText.getText().toString();
@@ -147,16 +158,14 @@ public class ChatFunction extends AppCompatActivity {
         }
     }
 
-    private void checkChatRoom()
-    {
-        firebaseDatabase.getReference().child("chatrooms").orderByChild("users/"+myUid)
+    private void checkChatRoom() {
+        firebaseDatabase.getReference().child("chatrooms").orderByChild("users/" + myUid)
                 .equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot:snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             ChatModel chatModel = dataSnapshot.getValue(ChatModel.class);
-                            if (chatModel.users.containsKey(destUid)){
+                            if (chatModel.users.containsKey(destUid)) {
                                 chatRoomUid = dataSnapshot.getKey();
                                 button.setEnabled(true);
 
@@ -174,6 +183,22 @@ public class ChatFunction extends AppCompatActivity {
                     }
                 });
     }
+
+    public void settingName(String uid) {
+        firebaseDatabase.getReference().child("userInfo").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userProfile userProfile = snapshot.getValue(com.example.graduproject.userProfile.class);
+                friendName.setText(userProfile.getNickName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
     {
@@ -252,6 +277,12 @@ public class ChatFunction extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String profileimg = snapshot.getValue(String.class);
+                        if(profileimg == null) {
+                            Glide.with(holder.itemView.getContext())
+                                    .load(R.drawable.no_profile_image)
+                                    //.apply(new RequestOptions().circleCrop())
+                                    .into(holder.imageViewProfile);
+                        }
                         Glide.with(holder.itemView.getContext())
                                 .load(profileimg)
                                 //.apply(new RequestOptions().circleCrop())

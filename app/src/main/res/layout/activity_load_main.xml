@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인 하는 중"
+        android:text="로그인하는 중"
         android:layout_gravity="center"
         android:textSize="25sp"
         android:layout_marginTop="15dp"/>
