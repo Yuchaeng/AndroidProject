@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import java.util.Objects;
 
 public class TipFragment extends Fragment {
     ImageView image1, image2, image3, image4, image5;
@@ -35,6 +39,7 @@ public class TipFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), clubInformation.class); //fragment라서 activity intent와는 다른 방식
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+
             }
         });
 
@@ -44,6 +49,7 @@ public class TipFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), wantClass.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+
             }
         });
 
@@ -64,22 +70,6 @@ public class TipFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         return v;
     }
