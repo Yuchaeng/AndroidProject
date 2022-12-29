@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,17 @@ public class signup extends AppCompatActivity {
     private TextInputEditText idEdittext;
     private TextInputEditText pwEditText;
     private TextInputEditText pwOKcheck;
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode == android.view.KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(signup.this, login.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
 
     @Override

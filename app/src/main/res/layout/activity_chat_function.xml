@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="대화 끝내기"
             android:id="@+id/btnFinish"
-            android:background="#e8d9f5"/>
+            android:background="#e8d9f5" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_view"

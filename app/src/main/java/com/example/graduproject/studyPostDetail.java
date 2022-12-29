@@ -98,6 +98,8 @@ public class studyPostDetail extends AppCompatActivity {
         ca = new commentAdapter();
         commentLists.setAdapter(ca);
 
+
+
         mDatabaseRef.child("allPosts").child("study").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

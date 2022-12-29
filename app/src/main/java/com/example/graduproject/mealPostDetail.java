@@ -95,6 +95,7 @@ public class mealPostDetail extends AppCompatActivity {
         Intent detailIntent = getIntent();
         String key = detailIntent.getStringExtra("key");
 
+
         ca = new commentAdapter();
         commentLists.setAdapter(ca);
 

@@ -102,7 +102,7 @@
 
             <TextView
                 android:id="@+id/whenEmpty"
-                android:layout_width="330dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:layout_below="@+id/emptyTitle"
@@ -136,7 +136,7 @@
 
             <TextView
                 android:id="@+id/whatInterest"
-                android:layout_width="330dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:layout_below="@+id/interestTitle"

@@ -33,7 +33,7 @@
         <ViewFlipper
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="190dp" />
+            android:layout_height="200dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -193,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="컴공 주목! 짱동아리 다락방입니다.\n재미 보장에 스터디까지~ 놀러오세요~"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:layout_marginStart="28dp"
                         android:layout_marginTop="5dp"
                         android:layout_below="@+id/club1"/>
@@ -246,7 +246,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:text="누구나 환영하는 동아리 아티스트입니다.\n적정기술 공부, 공모전까지! 함께해요~"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_below="@+id/club2"

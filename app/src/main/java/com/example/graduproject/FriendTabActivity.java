@@ -165,6 +165,7 @@ public class FriendTabActivity extends FragmentActivity implements OnItemClick {
         Intent intent = new Intent(this, ChatFunction.class);
         intent.putExtra("destUid", value);
         startActivity(intent);
+        finish();
         /*FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 

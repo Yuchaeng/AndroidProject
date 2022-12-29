@@ -283,10 +283,13 @@ public class ChatFunction extends AppCompatActivity {
                                     //.apply(new RequestOptions().circleCrop())
                                     .into(holder.imageViewProfile);
                         }
-                        Glide.with(holder.itemView.getContext())
-                                .load(profileimg)
-                                //.apply(new RequestOptions().circleCrop())
-                                .into(holder.imageViewProfile);
+                        else {
+                            Glide.with(holder.itemView.getContext())
+                                    .load(profileimg)
+                                    //.apply(new RequestOptions().circleCrop())
+                                    .into(holder.imageViewProfile);
+                        }
+
                     }
 
                     @Override

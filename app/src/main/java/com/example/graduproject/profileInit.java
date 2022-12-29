@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -47,6 +48,17 @@ public class profileInit extends AppCompatActivity {
             "행정학과","영어영문학과","문예창작학과","산업공학과","MSDE학과","경영학과","융합공학부(융합기계공학전공)","융합공학부(건설환경융합전공)","융합사회학부(헬스피트니스전공)",
             "융합사회학부(문화예술전공)","융합사회학부(영어전공)","융합사회학부(벤처경영전공)","인공지능응용학과","지능형반도체공학과","미래에너지융합학과"};
     private String[] selectStundetId = {"16학번","17학번","18학번","19학번","20학번","21학번","22학번","23학번"};
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if(keycode == android.view.KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(profileInit.this, signup.class));
+            finish();
+            return true;
+        }
+
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

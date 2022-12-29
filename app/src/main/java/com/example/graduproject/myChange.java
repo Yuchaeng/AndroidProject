@@ -290,7 +290,7 @@ public class myChange extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 Log.e(TAG,exception.toString());
-                Toast.makeText(myChange.this,"업로드 실패",Toast.LENGTH_SHORT).show();
+                Toast.makeText(myChange.this,"프로필 사진을 변경하지 못했어요.",Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -302,7 +302,7 @@ public class myChange extends AppCompatActivity {
                         userProfile.setProfileImageUrl(uri.toString());
                         mDatabaseRef.child("userInfo").child(mUser.getUid()).child("profileImageUrl").removeValue();
                         mDatabaseRef.child("userInfo").child(mUser.getUid()).child("profileImageUrl").setValue(uri.toString());
-                        Toast.makeText(myChange.this,"업로드 성공",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(myChange.this,"프로필 사진이 변경되었어요.",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
